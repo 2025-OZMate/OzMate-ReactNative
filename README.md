@@ -1,1 +1,0 @@
-# OzMate-ReactNative
