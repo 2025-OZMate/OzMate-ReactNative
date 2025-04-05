@@ -1,10 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { useFonts } from 'expo-font';
+import AppLoading from 'expo-app-loading';
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    'Pretendard-Regular': require('../OzMate-ReactNative/assets/fonts/pretendard-regular.otf'),
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app! test </Text>
+      <Text style={{ fontFamily: 'Pretendard-Regular' }}>
+        font test
+      </Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -17,4 +29,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+}); 
