@@ -1,10 +1,35 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import Card from '../components/Practice/Card';
+import { View, Text, Image } from 'react-native';
+import practiceImg from "../assets/images/practiceLogo.png"
+import cultureImg from "../assets/images/cultureQuizImg.png"
+import logoImg from "../assets/images/logo.png"
+const titles = [
+    { subject: "English Practice", title: " You can learn expressions", src: practiceImg },
+    { subject: "Australia Culture Quiz", title: "You can take fun quizzes about Australia!", src: cultureImg },
+]
 
 export default function TestScreen() {
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>select test page</Text>
+        <View style={{ backgroundColor: "#FFF9C4", flex: 1, display: "flex", alignItems: "center" }}>
+            <View>
+                <Image source={logoImg}
+                    style={{
+                        width: 100, height: 24, resizeMode: "contain",
+                        marginTop: 16, marginBottom: 28
+                    }} />
+            </View>
+
+            <View>
+                {titles.map((item, index) => (
+                    <Card
+                        key={index}
+                        subject={item.subject}
+                        title={item.title}
+                        source={item.src}
+                    />
+                ))}
+            </View>
         </View>
     );
 }
