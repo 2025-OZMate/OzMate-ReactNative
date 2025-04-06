@@ -15,7 +15,7 @@ export default function BottomNav() {
             screenOptions={({ route }) => ({
                 headerShown: false,
                 tabBarShowLabel: false,
-                tabBarIcon: ({ focused, color, size }) => {
+                tabBarIcon: ({ focused }) => {
                     if (route.name === 'Test') {
                         return (
                             <MaterialCommunityIcons
@@ -60,6 +60,9 @@ export default function BottomNav() {
                     flexDirection: 'row',
                     justifyContent: 'center',
                     alignItems: 'center',
+
+                    borderTopWidth: 0,
+                    borderTopColor: 'transparent',
                 },
                 tabBarItemStyle: {
                     alignItems: 'center',
