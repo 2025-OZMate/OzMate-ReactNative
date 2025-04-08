@@ -6,6 +6,7 @@ import AppLoading from 'expo-app-loading';
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BottomNav from './components/common/BottomNav';
+import SignUp from './screens/Login/SignUp';
 import Login from './screens/Login/Login';
 import LogoScreen from './screens/LogoScreen';
 import HomeScreen from './screens/HomeScreen';
@@ -34,6 +35,7 @@ export default function App() {
           <Stack.Screen name="SelectTest" component={SelectTestScreen} options={{ headerShown: false }} />
           <Stack.Screen name="TranslationTest" component={TranslationTestScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+          <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
         </Stack.Navigator>
         <StatusBar style="auto" />
       </NavigationContainer>

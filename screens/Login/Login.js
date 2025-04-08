@@ -42,7 +42,7 @@ export default function Login() {
         <View style={styles.container}>
 
             <View style={styles.mainContainer}>
-                <Logo />
+                {<Logo />}
                 <View style={styles.inputsContainer}>
                     <TextInput
                         placeholder="User ID"
@@ -87,9 +87,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: colors.background,
-    },
-    mainContainer: {
-
     },
     ButtonContainer: {
         paddingBottom: 40,
