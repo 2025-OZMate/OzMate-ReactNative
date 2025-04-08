@@ -1,0 +1,75 @@
+[
+    {
+        "id": 1,
+        "question": "It might rain tomorrow.",
+        "block": [
+            "올",
+            "있대요",
+            "내일",
+            "수도",
+            "비가"
+        ],
+        "correct": [
+            "내일 비가 올 수도 있대요.",
+            "내일 비가 올 수도 있대요"
+        ]
+    },
+    {
+        "id": 2,
+        "question": "Can I get a cup of coffee?",
+        "block": [
+            "시킬",
+            "커피",
+            "수",
+            "한잔",
+            "있을까요?"
+        ],
+        "correct": [
+            "커피 한잔 시킬 수 있을까요?",
+            "커피 한잔 시킬 수 있을까요"
+        ]
+    },
+    {
+        "id": 3,
+        "question": "Do you know where the school is?",
+        "block": [
+            "있는지",
+            "학교가",
+            "아세요?",
+            "어디에"
+        ],
+        "correct": [
+            "학교가 어디에 있는지 아세요?",
+            "학교가 어디에 있는지 아세요"
+        ]
+    },
+    {
+        "id": 4,
+        "question": "What a lovely day isn’t it?",
+        "block": [
+            "멋진",
+            "않나요?",
+            "날이지",
+            "정말"
+        ],
+        "correct": [
+            "정말 멋진 날이지 않나요?",
+            "정말 멋진 날이지 않나요"
+        ]
+    },
+    {
+        "id": 5,
+        "question": "I think this computer is broken.",
+        "block": [
+            "이",
+            "고장난",
+            "같아요",
+            "것",
+            "컴퓨터가"
+        ],
+        "correct": [
+            "이 컴퓨터가 고장난 것 같아요.",
+            "이 컴퓨터가 고장난 것 같아요"
+        ]
+    }
+]
