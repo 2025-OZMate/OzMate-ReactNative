@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "question": "What is a commonly used greeting in Australia?",
+        "choice": [
+            "Hello",
+            "Good Day",
+            "Hiya",
+            "Bonjour"
+        ],
+        "correct": "Good Day",
+        "explanation": "G'day is a friendly and typical greeting in Australia!"
+    },
+    {
+        "id": 2,
+        "question": "When is Australia Day, a well-known public holiday in Australia?",
+        "choice": [
+            "January 26",
+            "March 1",
+            "June 15",
+            "December 1"
+        ],
+        "correct": "January 26",
+        "explanation": "This day celebrates the founding of Australia and is marked by various events and festivities."
+    },
+    {
+        "id": 3,
+        "question": "What is a typical Australian breakfast?",
+        "choice": [
+            "Pancakes",
+            "Toast with Vegemite",
+            "Bacon and eggs",
+            "Cereal"
+        ],
+        "correct": "Toast with Vegemite",
+        "explanation": "Vegemite is a beloved and unique spread in Australia. It might be surprising at first!"
+    },
+    {
+        "id": 4,
+        "question": "What are two of the most famous animals in Australia?",
+        "choice": [
+            "Koala and Kangaroo",
+            "Emu and Cockatoo",
+            "Wombat and Dingo",
+            "Wolf and Mole"
+        ],
+        "correct": "Koala and Kangaroo",
+        "explanation": "These two animals are iconic symbols of Australia."
+    },
+    {
+        "id": 5,
+        "question": "What does the Australian slang word arvo mean?",
+        "choice": [
+            "Morning",
+            "Afternoon",
+            "Friend",
+            "Weather"
+        ],
+        "correct": "Afternoon",
+        "explanation": "In Australian English, arvo is a shortened form of afternoon."
+    }
+]
