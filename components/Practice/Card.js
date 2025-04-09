@@ -17,7 +17,7 @@ export default function ({ subject, title, source }) {
         <TouchableOpacity onPress={handlePress}
             style={{
                 backgroundColor: "white", marginBottom: 16,
-                width: 335, height: 120, borderRadius: 16,
+                height: 120, borderRadius: 16,
                 shadowColor: "#000",
                 shadowOffset: { width: 0, height: 1 },
                 shadowOpacity: 0.1,
@@ -33,7 +33,7 @@ export default function ({ subject, title, source }) {
                 <View style={{ marginLeft: 13 }}>
                     <Text
                         style={{
-                            fontSize: 20, fontWeight: '600', fontFamily: "Pretendard-Regular",
+                            fontSize: 20, fontWeight: "600", fontFamily: "Pretendard-Bold",
                         }}>{subject}</Text>
                     <Text style={{ fontSize: 12, color: "#777", marginTop: 8, fontFamily: "Pretendard-Regular" }}>{title}</Text>
                 </View>

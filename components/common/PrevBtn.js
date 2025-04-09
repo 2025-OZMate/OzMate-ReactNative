@@ -8,7 +8,7 @@ export default function PrevBtn() {
         navigation.goBack();
     }
     return (
-        <TouchableOpacity onPress={handlePress} style={{ marginTop: 4, marginLeft: 20 }}>
+        <TouchableOpacity onPress={handlePress} style={{ marginTop: 54, marginLeft: 20 }}>
             <Image source={PrevBtnImg}
                 style={{ width: 40, height: 40 }} />
         </TouchableOpacity>
