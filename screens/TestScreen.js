@@ -11,16 +11,16 @@ const titles = [
 
 export default function TestScreen() {
     return (
-        <View style={{ backgroundColor: "#FFF9C4", flex: 1, display: "flex", alignItems: "center" }}>
+        <View style={{ backgroundColor: "#FFF9C4", flex: 1, }}>
             <View>
                 <Image source={logoImg}
                     style={{
                         width: 100, height: 24, resizeMode: "contain",
-                        marginTop: 16, marginBottom: 28
+                        marginTop: 66, marginBottom: 28, alignSelf: "center"
                     }} />
             </View>
 
-            <View>
+            <View style={{ marginHorizontal: 20 }}>
                 {titles.map((item, index) => (
                     <Card
                         key={index}

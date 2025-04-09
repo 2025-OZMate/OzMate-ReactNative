@@ -13,6 +13,9 @@ import HomeScreen from './screens/HomeScreen';
 import TestScreen from './screens/TestScreen';
 import SelectTestScreen from './screens/Practice/SelectTestScreen';
 import TranslationTestScreen from './screens/Practice/TranslationTestScreen';
+import BookMarkScreen from './screens/Mypage/BookMark';
+import LanguageScreen from './screens/Mypage/Language';
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -27,7 +30,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Login">
+        <Stack.Navigator initialRouteName="Mypage">
           <Stack.Screen name="LogoScreen" component={LogoScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Home" component={BottomNav} options={{ headerShown: false }} />
           <Stack.Screen name="Mypage" component={BottomNav} options={{ headerShown: false }} />
@@ -36,6 +39,8 @@ export default function App() {
           <Stack.Screen name="TranslationTest" component={TranslationTestScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
           <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
+          <Stack.Screen name="BookMarkScreen" component={BookMarkScreen} options={{ headerShown: false }} />
+          <Stack.Screen name="LanguageScreen" component={LanguageScreen} options={{ headerShown: false }} />
         </Stack.Navigator>
         <StatusBar style="auto" />
       </NavigationContainer>
