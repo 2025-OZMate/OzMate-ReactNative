@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet, Modal, } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import NextButton from "../../assets/images/next.png"
 import { StackNavigationProp } from "@react-navigation/stack";
 
 //화면
@@ -46,7 +45,7 @@ export default function FeatureCard({ title }: FeatureCardProps) {
                 <Text style={[styles.cardTitle, title === "Log Out" && { color: "red" }]}>{title}</Text>
 
                 {title !== "Log Out" && (
-                    <Image source={NextButton} style={styles.icon} />
+                    <Image source={require('../../assets/images/next.png')} style={styles.icon} />
                 )}
             </TouchableOpacity>
 

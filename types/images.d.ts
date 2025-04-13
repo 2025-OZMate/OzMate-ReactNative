@@ -1,8 +1,21 @@
-// declarations.d.ts
-declare module "*.png" {
-    const value: any;
+// types/images.d.ts (or declarations.d.ts)
+
+declare module '*.png' {
+    const value: import('react-native').ImageSourcePropType;
     export default value;
 }
-declare module "*.jpg";
-declare module "*.jpeg";
-declare module "*.svg";
+
+declare module '*.jpg' {
+    const value: import('react-native').ImageSourcePropType;
+    export default value;
+}
+
+declare module '*.jpeg' {
+    const value: import('react-native').ImageSourcePropType;
+    export default value;
+}
+
+declare module '*.svg' {
+    const value: import('react-native').ImageSourcePropType;
+    export default value;
+}

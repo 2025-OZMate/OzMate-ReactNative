@@ -1,9 +1,9 @@
+import React from "react";
 import { Image, View, StyleSheet } from "react-native";
-import Logo from "../../assets/images/logo.png"
 export default function LogoMain() {
     return (
-        <View style={{ display: "flex", justifyContent: "center", alignItems: "center", paddingTop: "175", paddingBottom: "80" }}>
-            <Image source={Logo} style={styles.Logo} />
+        <View style={{ display: "flex", justifyContent: "center", alignItems: "center", paddingTop: 175, paddingBottom: 80 }}>
+            <Image source={require('../../assets/images/logo.png')} style={styles.Logo} />
         </View>
     )
 }

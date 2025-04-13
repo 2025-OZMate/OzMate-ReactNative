@@ -1,10 +1,13 @@
 import React from "react";
 import { View, Image, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { useNavigation } from '@react-navigation/native';
-
-
+import { StackNavigationProp } from "@react-navigation/stack";
+type RootStackParamList = {
+    SelectTest: undefined;
+    TranslationTest: undefined;
+}
 export default function ({ subject, title, source }) {
-    const navigation = useNavigation();
+    const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
     const handlePress = () => {
         if (subject === "English Practice") {
             navigation.navigate('SelectTest')
