@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import { View, Text, Image, TouchableOpacity, StyleSheet, Modal, } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import NextButton from "../../assets/images/next.png"
+import { StackNavigationProp } from "@react-navigation/stack";
 
+//화면
+type RootStackParamList = {
+    BookMarkScreen: undefined;
+    LanguageScreen: undefined;
+    Login: undefined;
+}
+
+type NavigationProp = StackNavigationProp<RootStackParamList>;
 interface FeatureCardProps {
     title: string;
 }
 
 export default function FeatureCard({ title }: FeatureCardProps) {
-    const navigation = useNavigation();
+    const navigation = useNavigation<NavigationProp>();
     const [showLogoutPopup, setShowLogoutPopup] = useState(false);
     const handleClick = () => {
         if (title === "BookmarkList") {
@@ -37,7 +45,7 @@ export default function FeatureCard({ title }: FeatureCardProps) {
                 <Text style={[styles.cardTitle, title === "Log Out" && { color: "red" }]}>{title}</Text>
 
                 {title !== "Log Out" && (
-                    <Image source={NextButton} style={styles.icon} />
+                    <Image source={require('../../assets/images/next.png')} style={styles.icon} />
                 )}
             </TouchableOpacity>
 
@@ -116,6 +124,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     popup: {
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 2,
         backgroundColor: "#FFF",
         borderRadius: 14,
     },

@@ -1,3 +1,4 @@
+import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
@@ -30,7 +31,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Mypage">
+        <Stack.Navigator initialRouteName="LogoScreen">
           <Stack.Screen name="LogoScreen" component={LogoScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Home" component={BottomNav} options={{ headerShown: false }} />
           <Stack.Screen name="Mypage" component={BottomNav} options={{ headerShown: false }} />

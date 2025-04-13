@@ -1,16 +1,22 @@
 import { View, TextInput, StyleSheet, Alert, Image } from "react-native";
 import { colors } from "../../styles/colors";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import Logo from "../../components/common/Logo";
 import Button from "../../components/common/Button";
+import { StackNavigationProp } from "@react-navigation/stack";
 
+type RootStackParamList = {
+    SignUp: undefined;
+    Home: undefined;
+}
+type NavigationProp = StackNavigationProp<RootStackParamList>
 export default function Login() {
     const [form, setForm] = useState({ userid: "", password: "" });
-    const navigation = useNavigation();
+    const navigation = useNavigation<NavigationProp>();
     const handleSignUp = () => {
-        navigation.navigate("")
+        navigation.navigate("SignUp")
     }
     const handleChange = (name, value) => {
         setForm({ ...form, [name]: value });
@@ -41,7 +47,7 @@ export default function Login() {
     return (
         <View style={styles.container}>
 
-            <View style={styles.mainContainer}>
+            <View>
                 {<Logo />}
                 <View style={styles.inputsContainer}>
                     <TextInput
@@ -112,8 +118,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 1 },
         shadowOpacity: 0.1,
         shadowRadius: 4,
-        elevation: 2, // Android에서 그림자
-        borderRadius: 16,
+        elevation: 2,
     },
     inputsContainer: {
         display: "flex"

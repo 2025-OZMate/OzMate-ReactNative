@@ -1,10 +1,18 @@
+import React from "react";
+import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { View, TextInput, StyleSheet, Alert, Image } from "react-native";
 import LogoMain from "../../components/common/Logo";
 import Button from "../../components/common/Button";
 import axios from "axios";
 import { colors } from "../../styles/colors";
-export default function SignUp({ navigation }) {
+import { StackNavigationProp } from "@react-navigation/stack";
+
+type RootStackParamList = {
+    Login: undefined;
+}
+export default function SignUp() {
+    const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
     const [form, setForm] = useState({
         username: "",
         userid: "",
@@ -109,8 +117,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 1 },
         shadowOpacity: 0.1,
         shadowRadius: 4,
-        elevation: 2, // Android에서 그림자
-        borderRadius: 16,
+        elevation: 2
     },
     inputsContainer: {
         display: "flex"
