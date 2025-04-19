@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
-import { shadows } from '../../styles/designsystem';
+import { shadows } from "../../styles/designSystem"
 interface InfoCardProps {
     ImgUrl: string | undefined;
     title: string;
