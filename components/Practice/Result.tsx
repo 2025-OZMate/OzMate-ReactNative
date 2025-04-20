@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 export default function Result() {
     const navigation = useNavigation();
     return (
-        <View >
+        <View>
             <Image source={require('../../assets/images/finish.png')}
                 style={{ width: 80, height: 119, margin: "auto", marginTop: 32, marginBottom: 32 }} />
             <View style={styles.textContainer}>
