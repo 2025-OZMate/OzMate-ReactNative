@@ -1,9 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const infoCardRoutes = require('./routes/infoCardRoutes');  // 라우트 파일 불러오기
+const infoCardRoutes = require('./routes/infoCardRoutes');
 const app = express();
-
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
