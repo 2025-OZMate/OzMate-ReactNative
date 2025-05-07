@@ -6,6 +6,8 @@ import axios from "axios";
 import Logo from "../../components/common/Logo";
 import Button from "../../components/common/Button";
 import { StackNavigationProp } from "@react-navigation/stack";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 
 type RootStackParamList = {
     SignUp: undefined;
@@ -34,11 +36,17 @@ export default function Login() {
             Alert.alert('비밀번호를 입력해주세요!')
             return;
         }
+
         try {
-            //const res = await axios.post("") //나중에 수정
-            //setItem
+            const response = await axios.post("http://localhost:5000/auth/login", form);
+
+            //username
+            const { username } = response.data;
+            await AsyncStorage.setItem("username", username)
+            console.log('login성공')
             navigation.navigate("Home")
-        } catch (error) {
+        }
+        catch (error) {
             console.error(error);
         }
     }
