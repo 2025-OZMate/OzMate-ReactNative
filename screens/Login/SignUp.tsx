@@ -33,8 +33,9 @@ export default function SignUp() {
             Alert.alert('비밀번호가 일치하지 않습니다.')
             return;
         }
+
         try {
-            const response = await axios.post("/api주소", form);//연결
+            const response = await axios.post("http://localhost:5000/auth/signup", form);//연결
             Alert.alert('회원가입 성공')
             navigation.navigate('Login')
 
