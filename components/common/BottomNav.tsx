@@ -16,7 +16,7 @@ export default function BottomNav() {
                 headerShown: false,
                 tabBarShowLabel: false,
                 tabBarIcon: ({ focused }) => {
-                    if (route.name === 'Test') {
+                    if (route.name === 'TestScreen') {
                         return (
                             <MaterialCommunityIcons
                                 name="note-edit-outline"
@@ -69,7 +69,7 @@ export default function BottomNav() {
                 },
             })}
         >
-            <Tab.Screen name="Test" component={TestScreen} />
+            <Tab.Screen name="TestScreen" component={TestScreen} />
             <Tab.Screen name="Home" component={HomeScreen} />
             <Tab.Screen name="Mypage" component={MyPageScreen} />
         </Tab.Navigator>

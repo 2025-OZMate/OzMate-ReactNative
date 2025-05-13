@@ -5,7 +5,7 @@ import PrevBtn from '../../components/common/PrevBtn';
 export default function LanguageScreen() {
     return (
         <View style={{ flex: 1, backgroundColor: colors.background }}>
-            <PrevBtn />
+            <PrevBtn address='Mypage' />
             <Text>Change Language</Text>
         </View>
     );

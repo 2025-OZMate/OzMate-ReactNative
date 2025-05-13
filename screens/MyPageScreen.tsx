@@ -4,7 +4,7 @@ import { View, Text } from 'react-native';
 import FeatureCard from '../components/Mypage/FeatureCard';
 import ProfileCard from '../components/Mypage/ProfileCard';
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import BottomNav from '../components/common/BottomNav';
 
 type User = {
     name: string;

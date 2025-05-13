@@ -2,8 +2,17 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import Button from "../common/Button";
 import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+
+type RootStackParamList = {
+    [key: string]: undefined
+}
+
+type NavigationProp = StackNavigationProp<RootStackParamList>
+
 export default function Result() {
-    const navigation = useNavigation();
+    const navigation = useNavigation<NavigationProp>();
+    const handleClick = () => { navigation.navigate("TestScreen") }
     return (
         <View>
             <Image source={require('../../assets/images/finish.png')}
@@ -14,7 +23,7 @@ export default function Result() {
                     about Australia!</Text>
             </View>
             <View style={styles.ButtonContainer}>
-                <Button title="Done" onPress={() => navigation.goBack()} />
+                <Button title="Done" onPress={handleClick} />
             </View>
         </View>
     )
