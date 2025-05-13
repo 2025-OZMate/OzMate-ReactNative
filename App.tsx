@@ -34,7 +34,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Login">
+        <Stack.Navigator initialRouteName="SelectTest">
           <Stack.Screen name="LogoScreen" component={LogoScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Mypage" component={MyPageScreen} options={{ headerShown: false }} />

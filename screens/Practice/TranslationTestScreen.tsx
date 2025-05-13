@@ -43,7 +43,7 @@ export default function TranslationTestScreen() {
             <View style={{ zIndex: 100 }}> <PrevBtn address="TestScreen" /></View>
             {quizDone ? (
                 <View >
-                    <Result />
+                    <Result marginTop={32} />
                 </View>
             ) : showResult ? (
                 //맞음 / 틀림

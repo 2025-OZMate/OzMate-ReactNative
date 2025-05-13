@@ -52,7 +52,7 @@ export default function QuizScreen() {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <PrevBtn address="Home" />
+                <PrevBtn address="TestScreen" />
                 <ProgressBar currentQuestion={currentQuestionIndex} questionsLength={quizData.length} />
             </View>
 
@@ -80,7 +80,7 @@ export default function QuizScreen() {
                 <TextInput
                     value={userAnswer}
                     onChangeText={setUserAnswer}
-                    placeholder="정답을 입력하세요"
+                    placeholder="Enter the correct answer"
                     editable={!isAnswered}
                     style={[styles.input,
                     isAnswered && isCorrect === true && { borderColor: "green" },
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
 
     },
     header: {
-        display: "flex", flexDirection: "row",
+        display: "flex", flexDirection: "row", alignItems: "center"
     },
     indexText: {
         fontSize: 14, textAlign: "center",
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
         display: "flex", justifyContent: "center",
         borderRadius: 10, height: 40, borderWidth: 1,
         fontSize: 16, marginBottom: 10, borderColor: "#FFB600",
-        paddingLeft: 10, fontWeight: 500, fontFamily: "Pretendard-bold",
+        paddingLeft: 20, fontWeight: 500, fontFamily: "Pretendard-bold",
     },
 
     correctImg: {

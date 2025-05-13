@@ -1,11 +1,13 @@
 import React from "react";
 import { StyleSheet, View } from "react-native-web";
+
 interface ProgressBarProps {
     currentQuestion: number;
     questionsLength: number;
 }
 export default function ProgressBar({ currentQuestion, questionsLength }: ProgressBarProps) {
-    const progress = ((currentQuestion + 1 / questionsLength * 100))
+    const progress = ((currentQuestion + 1) / questionsLength) * 100;
+
     return (
         <View style={styles.container}>
             <View style={[styles.progress, { width: `${progress}%` }]}></View>
@@ -14,13 +16,12 @@ export default function ProgressBar({ currentQuestion, questionsLength }: Progre
 }
 const styles = StyleSheet.create({
     container: {
-        width: 287,
+        width: 287, height: 16,
         backgroundColor: "#FFF59D",
         borderRadius: 10,
         paddingVertical: 3,
         paddingLeft: 3,
-        marginTop: 25,
-        marginBottom: 20,
+        marginTop: 50, marginLeft: 17
     },
     progress: {
         height: 10,
