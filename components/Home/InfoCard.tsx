@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
 import { shadows } from "../../styles/designSystem"
 interface InfoCardProps {
-    ImgUrl: string | undefined;
+    ImgUrl: string | { uri: string };
     title: string;
     description: string;
     category: string;
@@ -10,7 +10,8 @@ interface InfoCardProps {
 export default function InfoCard({ ImgUrl, title, description, category }: InfoCardProps) {
     return (
         <View style={[styles.allContainer, shadows.shadow1]}>
-            <Image source={ImgUrl} style={styles.bannerImg} />
+            {/**   <Image source={typeof ImgUrl === 'string' ? { uri: ImgUrl } : ImgUrl} style={styles.bannerImg} />
+            */}
             <View style={styles.contentContainer}>
                 <Text style={styles.title}>{title}</Text>
                 <Text style={styles.description}>{description}</Text>

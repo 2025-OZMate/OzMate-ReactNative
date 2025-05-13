@@ -40,10 +40,10 @@ export default function TranslationTestScreen() {
 
     return (
         <View style={{ flex: 1, backgroundColor: colors.background }}>
-            <View style={{ zIndex: 100 }}> <PrevBtn /></View>
+            <View style={{ zIndex: 100 }}> <PrevBtn address="TestScreen" /></View>
             {quizDone ? (
                 <View >
-                    <Result />
+                    <Result marginTop={32} />
                 </View>
             ) : showResult ? (
                 //맞음 / 틀림

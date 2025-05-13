@@ -2,19 +2,30 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import Button from "../common/Button";
 import { useNavigation } from "@react-navigation/native";
-export default function Result() {
-    const navigation = useNavigation();
+import { StackNavigationProp } from "@react-navigation/stack";
+
+type RootStackParamList = {
+    [key: string]: undefined
+}
+type styleProps = {
+    marginTop: number;
+}
+type NavigationProp = StackNavigationProp<RootStackParamList>
+
+export default function Result({ marginTop }: styleProps) {
+    const navigation = useNavigation<NavigationProp>();
+    const handleClick = () => { navigation.navigate("TestScreen") }
     return (
         <View>
             <Image source={require('../../assets/images/finish.png')}
-                style={{ width: 80, height: 119, margin: "auto", marginTop: 32, marginBottom: 32 }} />
+                style={{ width: 80, height: 119, margin: "auto", marginTop: marginTop, marginBottom: 32 }} />
             <View style={styles.textContainer}>
                 <Text style={styles.title}>Good Job !</Text>
                 <Text style={styles.description}>You know a lot of things
                     about Australia!</Text>
             </View>
             <View style={styles.ButtonContainer}>
-                <Button title="Done" onPress={() => navigation.goBack()} />
+                <Button title="Done" onPress={handleClick} />
             </View>
         </View>
     )

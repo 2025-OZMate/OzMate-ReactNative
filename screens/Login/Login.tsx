@@ -38,13 +38,13 @@ export default function Login() {
         }
 
         try {
-            const response = await axios.post("http://localhost:5000/auth/login", form);
+            const response = await axios.post("http://172.30.0.128:5000/login", form);
 
             //username
             const { username } = response.data;
             await AsyncStorage.setItem("username", username)
             console.log('login성공')
-            navigation.navigate("Home")
+            navigation.navigate("BottomNav")
         }
         catch (error) {
             console.error(error);

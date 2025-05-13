@@ -25,17 +25,17 @@ export default function SignUp() {
 
     const handleSubmit = async () => {
         const { username, userid, password, passwordConfirm } = form;
-        if (!username || !userid || !password || !passwordConfirm) {
+        if (!username.trim() || !userid.trim() || !password.trim() || !passwordConfirm.trim()) {
             Alert.alert('모든 항목을 입력해주세요.');
             return;
         }
-        if (form.password !== form.passwordConfirm) {
+        if (form.password.trim() !== form.passwordConfirm.trim()) {
             Alert.alert('비밀번호가 일치하지 않습니다.')
             return;
         }
 
         try {
-            const response = await axios.post("http://localhost:5000/auth/signup", form);//연결
+            const response = await axios.post("http://172.30.0.128:5000/signup", form);//연결
             Alert.alert('회원가입 성공')
             navigation.navigate('Login')
 

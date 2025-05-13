@@ -1,11 +1,11 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
-import ProfileImg from "../../assets/images/profile.png";
 
 interface useNameProps {
     useName: string;
 }
 export default function ProfileCard({ useName }: useNameProps) {
+    const ProfileImg = require('../../assets/images/profile.png')
     return (
         <View style={styles.container}>
             <Image source={ProfileImg}

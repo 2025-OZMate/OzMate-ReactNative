@@ -1,4 +1,5 @@
 import React from 'react';
+import BottomNav from '../components/common/BottomNav';
 import Card from '../components/Practice/Card';
 import { View, Text, Image } from 'react-native';
 import practiceImg from "../assets/images/practiceLogo.png"
