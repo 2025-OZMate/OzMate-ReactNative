@@ -1,5 +1,5 @@
 import React from "react";
-import { View, TextInput, Button, Text, ScrollView } from "react-native";
+import { View, TextInput, Button, Text, ScrollView, Alert } from "react-native";
 import { useState } from "react";
 import axios from "axios";
 
@@ -12,7 +12,12 @@ export default function ChatBot() {
     const [userInput, setUserInput] = useState<string>('')
     const [chatLog, setChatLog] = useState<chatMsg[]>([]) //이전 대화 내용 저장 배열
 
+
     const sendMessage = async () => {
+        if (!userInput.trim()) {
+            Alert.alert('메세지를 입력해주세요!')
+            return;
+        }
         try {
             const response = await axios.post('http://localhost:5000/chatbot', {
                 message: userInput,
