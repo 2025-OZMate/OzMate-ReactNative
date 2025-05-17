@@ -4,7 +4,6 @@ import ProgressBar from "../../components/Practice/ProgressBar";
 import Result from "../../components/Practice/Result";
 import PrevBtn from "../../components/common/PrevBtn";
 import quizData from "../../assets/data/translation.json";
-import { colors } from "../../styles/colors";
 interface Quiz {
     id: number;
     question: string;
@@ -12,7 +11,8 @@ interface Quiz {
     correct: string[];
 }
 
-export default function QuizScreen() {
+//문장 해석
+export default function SelectTestScreen() {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [userAnswer, setUserAnswer] = useState('');
     const [isAnswered, setIsAnswered] = useState(false);
@@ -125,9 +125,10 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 1 },
         shadowOpacity: 0.1,
         shadowRadius: 4,
-        paddingTop: 12,
+        paddingTop: 30,
         display: "flex",
-        justifyContent: "center", alignSelf: "center"
+        justifyContent: "center", alignSelf: "center",
+        elevation: 5,
     },
     questionText: {
         textAlign: "center",
@@ -147,7 +148,7 @@ const styles = StyleSheet.create({
         display: "flex", justifyContent: "center",
         borderRadius: 10, height: 40, borderWidth: 1,
         fontSize: 16, marginBottom: 10, borderColor: "#FFB600",
-        paddingLeft: 20, fontWeight: 500, fontFamily: "Pretendard-bold",
+        paddingLeft: 20, fontFamily: "Pretendard-bold",
     },
 
     correctImg: {
@@ -172,7 +173,7 @@ const styles = StyleSheet.create({
         textAlign: "center", fontFamily: "Pretendard-bold",
     },
     retry: {
-        fontSize: 20, color: "#FFB600", fontWeight: 600,
+        fontSize: 20, color: "#FFB600", fontWeight: "bold",
         textAlign: "center", fontFamily: "Pretendard-bold",
     },
     resultContainer: {

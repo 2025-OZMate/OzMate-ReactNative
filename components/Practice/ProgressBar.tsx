@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View } from "react-native-web";
+import { StyleSheet, View } from "react-native";
 
 interface ProgressBarProps {
     currentQuestion: number;
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#FFF59D",
         borderRadius: 10,
         paddingVertical: 3,
-        paddingLeft: 3,
+        paddingHorizontal: 3,
         marginTop: 50, marginLeft: 17
     },
     progress: {

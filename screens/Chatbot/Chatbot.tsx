@@ -19,7 +19,7 @@ export default function ChatBot() {
             return;
         }
         try {
-            const response = await axios.post('http://localhost:5000/chatbot', {
+            const response = await axios.post('http://192.168.45.77:5000/chatbot', {
                 message: userInput,
             })
             setChatLog([...chatLog, { from: 'me', text: userInput },

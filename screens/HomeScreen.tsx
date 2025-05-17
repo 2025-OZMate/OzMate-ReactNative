@@ -5,6 +5,7 @@ import Category from '../components/Home/Category';
 import axios from 'axios';
 
 interface Card {
+    _id: string,
     id: number,
     image: string,
     title: string,
@@ -50,6 +51,7 @@ export default function HomeScreen() {
             <ScrollView>
                 {cards.map((card, idx) => (
                     <InfoCard
+                        _id={card._id}
                         key={idx}
                         image={card.image}
                         title={card.title}

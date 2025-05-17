@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { shadows } from "../../styles/designSystem"
 import { useNavigation } from '@react-navigation/native';
 import { useEffect } from 'react';
@@ -18,8 +18,9 @@ interface InfoCardProps {
     title: string;
     subtitle: string;
     category: string;
+    onPress: () => void;
 }
-export default function InfoCard({ _id, image, title, subtitle, category }: InfoCardProps) {
+export default function InfoCard({ _id, image, title, subtitle, category, onPress }: InfoCardProps) {
     const navigation = useNavigation<NavigationProp>()
 
     const handleClick = async () => {
@@ -35,7 +36,7 @@ export default function InfoCard({ _id, image, title, subtitle, category }: Info
 
     return (
         <TouchableOpacity
-            onPress={handleClick}
+            onPress={typeof onPress === 'function' ? onPress : handleClick}
             style={[styles.allContainer, shadows.shadow1]}>
 
             <Image style={styles.bannerImg} source={{ uri: `http://localhost:5000/images/${image}` }} />

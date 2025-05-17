@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-native-web';
+import { Button } from 'react-native';
 
 interface PrevBtnProps {
     onPress: () => void;
