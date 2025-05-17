@@ -32,7 +32,7 @@ export default function Result({ marginTop }: styleProps) {
 }
 const styles = StyleSheet.create({
     ButtonContainer: {
-        paddingTop: 250 //임시
+        paddingTop: 270 //임시
     },
     textContainer: {
         backgroundColor: "#FFF",
