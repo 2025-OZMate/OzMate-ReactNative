@@ -38,6 +38,7 @@ export default function FeatureCard({ title }: FeatureCardProps) {
     const handleLogout = async () => {
         try {
             await AsyncStorage.removeItem('username')
+            await AsyncStorage.removeItem('userId')
             setShowLogoutPopup(false) //닫음
             console.log('로그아웃됨')
             navigation.navigate("Login")
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
         width: 120,
         fontFamily: "Pretendard-Bold",
         fontSize: 14,
-        fontWeight: 500,
+        fontWeight: "500",
     },
     font: {
         fontFamily: "Pretendard-Bold",
@@ -119,7 +120,7 @@ const styles = StyleSheet.create({
         color: "#1271ED",
         fontSize: 17,
         paddingTop: 11,
-        fontWeight: 600
+        fontWeight: "600"
     },
     icon: {
         width: 20,
@@ -143,7 +144,7 @@ const styles = StyleSheet.create({
     popupText1: {
         textAlign: "center",
         fontSize: 17,
-        fontWeight: 600,
+        fontWeight: "600",
         marginBottom: 5
     },
     popupText2: {
