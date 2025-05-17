@@ -1,5 +1,5 @@
 import React from 'react';
-import BottomNav from '../components/common/BottomNav';
+import NavBar from '../components/common/NavBar';
 import Card from '../components/Practice/Card';
 import { View, Text, Image } from 'react-native';
 const practiceImg = require('../assets/images/practiceLogo.png')
@@ -12,7 +12,7 @@ const titles = [
 export default function TestScreen() {
     const logoImg = require('../assets/images/logo.png')
     return (
-        <View style={{ backgroundColor: "#FFF9C4", flex: 1, }}>
+        <View style={{ backgroundColor: "#FFF9C4", flex: 1, position: "relative" }}>
             <View>
                 <Image source={logoImg}
                     style={{
@@ -21,7 +21,7 @@ export default function TestScreen() {
                     }} />
             </View>
 
-            <View style={{ marginHorizontal: 20 }}>
+            <View style={{ marginHorizontal: 20, flex: 1 }}>
                 {titles.map((item, index) => (
                     <Card
                         key={index}
@@ -31,6 +31,9 @@ export default function TestScreen() {
                     />
                 ))}
             </View>
+
+
+            <NavBar />
 
         </View>
     );

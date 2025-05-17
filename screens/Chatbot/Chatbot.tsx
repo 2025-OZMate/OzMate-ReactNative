@@ -1,7 +1,8 @@
 import React from "react";
-import { View, TextInput, Button, Text, ScrollView, Alert } from "react-native";
+import { View, TextInput, Button, Text, ScrollView, Alert, StyleSheet } from "react-native";
 import { useState } from "react";
 import axios from "axios";
+import NavBar from "../../components/common/NavBar";
 
 type chatMsg = {
     from: 'me' | 'ai';
@@ -19,7 +20,7 @@ export default function ChatBot() {
             return;
         }
         try {
-            const response = await axios.post('http://192.168.45.77:5000/chatbot', {
+            const response = await axios.post('http://192.168.0.32:5000/chatbot', {
                 message: userInput,
             })
             setChatLog([...chatLog, { from: 'me', text: userInput },
@@ -50,3 +51,6 @@ export default function ChatBot() {
         </View>
     )
 }
+const styles = StyleSheet.create({
+
+})
