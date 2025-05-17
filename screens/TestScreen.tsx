@@ -2,15 +2,15 @@ import React from 'react';
 import BottomNav from '../components/common/BottomNav';
 import Card from '../components/Practice/Card';
 import { View, Text, Image } from 'react-native';
-import practiceImg from "../assets/images/practiceLogo.png"
-import cultureImg from "../assets/images/cultureQuizImg.png"
-import logoImg from "../assets/images/logo.png"
+const practiceImg = require('../assets/images/practiceLogo.png')
+const cultureImg = require('../assets/images/cultureQuizImg.png')
 const titles = [
     { subject: "English Practice", title: " You can learn expressions", src: practiceImg },
     { subject: "Australia Culture Quiz", title: "You can take fun quizzes about Australia!", src: cultureImg },
 ]
 
 export default function TestScreen() {
+    const logoImg = require('../assets/images/logo.png')
     return (
         <View style={{ backgroundColor: "#FFF9C4", flex: 1, }}>
             <View>
@@ -31,6 +31,7 @@ export default function TestScreen() {
                     />
                 ))}
             </View>
+
         </View>
     );
 }

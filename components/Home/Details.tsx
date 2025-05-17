@@ -10,7 +10,9 @@ type DetailsProps = {
 export default function Details({ category, detailTitle, detailContent }: DetailsProps) {
     return (
         <View style={{ paddingHorizontal: 20 }}>
-            <Text style={[styles.font, styles.category]}>{category}</Text>
+            <View>
+                <Text style={[styles.font, styles.category]}>{category}</Text>
+            </View>
             <View>
                 <Text style={[styles.font, styles.title]}>{detailTitle}</Text>
                 <Text style={[styles.font, styles.content]}>{detailContent}</Text>
