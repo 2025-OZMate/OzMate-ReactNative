@@ -1,7 +1,6 @@
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from 'react-native';
 import { useFonts } from 'expo-font';
 /*import AppLoading from 'expo-app-loading';*/
 import { NavigationContainer } from '@react-navigation/native'
@@ -19,7 +18,9 @@ import LanguageScreen from './screens/Mypage/Language';
 import RandomInfoCard from './components/Home/RandomInfoCard';
 import DetailInfo from './screens/Home/DetailInfo';
 import MyPageScreen from './screens/MyPageScreen';
-
+import ChatBot from './screens/Chatbot/Chatbot';
+import ExchangeRate from './screens/ExchangeRate/ExchangeRate';
+import WriteInformation from './screens/Admin/WriteInformation';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -34,7 +35,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="SelectTest">
+        <Stack.Navigator initialRouteName="Mypage">
           <Stack.Screen name="LogoScreen" component={LogoScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Mypage" component={MyPageScreen} options={{ headerShown: false }} />
@@ -48,6 +49,9 @@ export default function App() {
           <Stack.Screen name="DetailInfo" component={DetailInfo} options={{ headerShown: false }} />
           <Stack.Screen name="TestScreen" component={TestScreen} options={{ headerShown: false }} />
           <Stack.Screen name="BottomNav" component={BottomNav} options={{ headerShown: false }} />
+          <Stack.Screen name="ChatBot" component={ChatBot} options={{ headerShown: false }} />
+          <Stack.Screen name="ExchangeRate" component={ExchangeRate} options={{ headerShown: false }} />
+          <Stack.Screen name="WriteInformation" component={WriteInformation} options={{ headerShown: false }} />
         </Stack.Navigator>
         <StatusBar style="auto" />
       </NavigationContainer>

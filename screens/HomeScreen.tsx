@@ -3,7 +3,7 @@ import { View, Text, Image, ScrollView, StyleSheet } from 'react-native';
 import InfoCard from '../components/Home/InfoCard';
 import Category from '../components/Home/Category';
 import axios from 'axios';
-
+import NavBar from '../components/common/NavBar';
 interface Card {
     _id: string,
     id: number,
@@ -60,6 +60,7 @@ export default function HomeScreen() {
                     />
                 ))}
             </ScrollView>
+            <NavBar />
         </View>
     );
 }

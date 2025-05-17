@@ -1,0 +1,57 @@
+import React from "react";
+import { View, TouchableOpacity, Image, StyleSheet } from "react-native";
+import { useNavigation, useRoute } from "@react-navigation/native";
+
+
+export default function NavBar() {
+    const icons = [
+        { name: "test", path: "TestScreen", defaultImg: require('../../assets/images/test.png'), clickedImg: require('../../assets/images/test-clicked.png') },
+        { name: "home", path: "Home", defaultImg: require('../../assets/images/home.png'), clickedImg: require('../../assets/images/home-clicked.png') },
+        // { name: "chatbot", path: "/Home", defaultImg: home, clickedImg: homeClicked },
+        { name: "mypage", path: "Mypage", defaultImg: require('../../assets/images/mypage.png'), clickedImg: require('../../assets/images/mypage-clicked.png') }
+    ]
+
+    const navigation = useNavigation()
+    const route = useRoute()
+
+    return (
+        <View style={styles.Container}>
+            <View style={styles.navContainer}>
+                <View style={styles.iconImgContainer}>
+                    {icons.map((icon) => {
+                        const isActive = route.name === icon.path
+                        return (
+                            <TouchableOpacity
+                                key={icon.name}
+                                onPress={() => navigation.navigate(icon.path)}
+
+                            >
+                                <Image
+                                    source={isActive ? icon.clickedImg : icon.defaultImg}
+                                    style={styles.iconImg}
+                                />
+
+                            </TouchableOpacity>
+                        )
+                    })}
+                </View>
+            </View>
+        </View>
+    )
+}
+
+const styles = StyleSheet.create({
+    Container: { marginHorizontal: 12 },
+    navContainer: {
+        backgroundColor: "#FFF", borderRadius: 20, paddingVertical: 20,
+        shadowColor: '#000', shadowOpacity: 0.1,
+        shadowOffset: { width: 0, height: 2 },
+        shadowRadius: 4, elevation: 4,
+        position: "absolute", bottom: 22, width: "100%"
+    },
+    iconImgContainer: {
+        display: "flex", flexDirection: "row", gap: 60, alignItems: "center",
+        margin: "auto"
+    },
+    iconImg: { width: 40, height: 40 }
+})
