@@ -38,16 +38,32 @@ export default function TranslationTestScreen() {
         }
     }
 
+    function NextButton() {
+        return (
+            <View style={styles.NextButtonContainer}>
+                <View  >
+                    <TouchableOpacity
+                        onPress={handleNext}
+
+                    >
+                        <Text style={styles.nextText}>Next</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        )
+    }
+
+
     return (
-        <View style={{ flex: 1, backgroundColor: colors.background }}>
-            <View style={{ zIndex: 100 }}> <PrevBtn address="TestScreen" /></View>
+        <View style={{ flex: 1, backgroundColor: colors.background, position: "relative", }}>
+            <View style={{ zIndex: 100, }} > <PrevBtn address="TestScreen" /></View>
             {quizDone ? (
                 <View >
                     <Result marginTop={32} />
                 </View>
             ) : showResult ? (
                 //맞음 / 틀림
-                <View>
+                <View style={{ flex: 1, marginHorizontal: 20 }}>
                     <Image
                         source={isCorrect ? require('../../assets/images/correct.png')
                             : require('../../assets/images/notCorrect.png')}
@@ -56,9 +72,7 @@ export default function TranslationTestScreen() {
                         <Text style={styles.correctAnswer}>{currentQuestion.correct}</Text>
                         <Text style={styles.explain}>{currentQuestion.explanation}</Text>
                     </View>
-                    <View style={styles.ButtonContainer}>
-                        <Button title="next" onPress={handleNext} />
-                    </View>
+                    <NextButton />
                 </View>
             ) : (
                 //quiz화면
@@ -89,6 +103,12 @@ export default function TranslationTestScreen() {
 }
 
 const styles = StyleSheet.create({
+    NextButtonContainer: {
+        height: 56, width: "100%", paddingVertical: 15,
+        backgroundColor: "#FFB600", borderRadius: 16,
+        position: "absolute", bottom: 20,
+    },
+    nextText: { textAlign: "center", fontSize: 20, color: "#FFF", fontWeight: "600" },
     bannerImg: {
         position: "absolute",
         top: -100,
@@ -117,7 +137,6 @@ const styles = StyleSheet.create({
     },
     contentContainer: {
         backgroundColor: "#FFF",
-        marginHorizontal: 20,
         paddingVertical: 33,
         borderRadius: 12
     },

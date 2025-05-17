@@ -53,6 +53,7 @@ export default function Button({ title, onPress, styleProps }: ButtonProps) {
 const styles = StyleSheet.create({
     buttonWrapper: {
         paddingHorizontal: 20,
+        height: 56
     },
     button: {
         borderRadius: 16,

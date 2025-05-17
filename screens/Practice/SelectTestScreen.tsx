@@ -91,14 +91,14 @@ export default function SelectTestScreen() {
 
 
             {isAnswered && !isCorrect && (
-                <View style={{ paddingHorizontal: 20, position: "absolute", bottom: 108 }}>
+                <View style={{ paddingHorizontal: 20, position: "absolute", bottom: 108, width: "100%" }}>
                     <TouchableOpacity onPress={handleRetry} style={styles.retryBtn}>
                         <Text style={styles.retry}>Retry</Text>
                     </TouchableOpacity>
                 </View>
             )}
 
-            <View style={{ paddingHorizontal: 20, position: "absolute", bottom: 40 }}>
+            <View style={{ paddingHorizontal: 20, position: "absolute", bottom: 40, width: "100%" }}>
                 <TouchableOpacity onPress={handleNext} style={styles.nextBtn}>
                     <Text style={styles.text}>Next</Text>
                 </TouchableOpacity>
@@ -159,14 +159,14 @@ const styles = StyleSheet.create({
     },
 
     retryBtn: {
-        backgroundColor: "#FFF59D", paddingVertical: 15,
-        width: 335,
+        backgroundColor: "#FFF59D", display: "flex", justifyContent: "center",
+        width: "100%",
         borderRadius: 16, height: 56, textAlign: "center", color: "#FFB600"
     },
     nextBtn: {
-        backgroundColor: "#FFB600", paddingVertical: 15,
+        backgroundColor: "#FFB600", display: "flex", justifyContent: "center",
         borderRadius: 16, height: 56, textAlign: "center",
-        width: 335,
+        width: "100%",
     },
     text: {
         fontSize: 20, color: "#FFF", fontWeight: 600,

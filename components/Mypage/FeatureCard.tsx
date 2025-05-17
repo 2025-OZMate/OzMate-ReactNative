@@ -94,6 +94,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     cardContainer: {
+        borderRadius: 10,
         flexDirection: "row",
         justifyContent: "space-between",
         paddingVertical: 25,
