@@ -1,15 +1,32 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { shadows } from "../../styles/designSystem"
+import { useNavigation } from '@react-navigation/native';
+import { useEffect } from 'react';
+import { StackNavigationProp } from '@react-navigation/stack';
+import axios from 'axios';
+type RootStackParamList = {
+    DetailInfo: { id: string };
+}
+type NavigationProp = StackNavigationProp<RootStackParamList>
+
 interface InfoCardProps {
+    _id: string;
     image: string | { uri: string };
     title: string;
     subtitle: string;
     category: string;
 }
-export default function InfoCard({ image, title, subtitle, category }: InfoCardProps) {
+export default function InfoCard({ _id, image, title, subtitle, category }: InfoCardProps) {
+    const navigation = useNavigation<NavigationProp>()
+
+    //console.log("page 고유id", _id)
+
     return (
-        <View style={[styles.allContainer, shadows.shadow1]}>
+        <TouchableOpacity
+            onPress={() => navigation.navigate('DetailInfo', { id: _id })}
+
+            style={[styles.allContainer, shadows.shadow1]}>
 
             <Image style={styles.bannerImg} source={{ uri: `http://localhost:5000/images/${image}` }} />
             <View style={styles.contentContainer}>
@@ -17,7 +34,7 @@ export default function InfoCard({ image, title, subtitle, category }: InfoCardP
                 <Text style={styles.description}>{subtitle}</Text>
                 <Text style={styles.category}>{category}</Text>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 const styles = StyleSheet.create({
