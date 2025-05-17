@@ -2,19 +2,19 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
 import { shadows } from "../../styles/designSystem"
 interface InfoCardProps {
-    ImgUrl: string | { uri: string };
+    image: string | { uri: string };
     title: string;
-    description: string;
+    subtitle: string;
     category: string;
 }
-export default function InfoCard({ ImgUrl, title, description, category }: InfoCardProps) {
+export default function InfoCard({ image, title, subtitle, category }: InfoCardProps) {
     return (
         <View style={[styles.allContainer, shadows.shadow1]}>
-            {/**   <Image source={typeof ImgUrl === 'string' ? { uri: ImgUrl } : ImgUrl} style={styles.bannerImg} />
-            */}
+
+            <Image style={styles.bannerImg} source={{ uri: `http://localhost:5000/images/${image}` }} />
             <View style={styles.contentContainer}>
                 <Text style={styles.title}>{title}</Text>
-                <Text style={styles.description}>{description}</Text>
+                <Text style={styles.description}>{subtitle}</Text>
                 <Text style={styles.category}>{category}</Text>
             </View>
         </View>
@@ -22,6 +22,11 @@ export default function InfoCard({ ImgUrl, title, description, category }: InfoC
 }
 const styles = StyleSheet.create({
     allContainer: {
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 1 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 2,
         flexDirection: "row",
         marginHorizontal: 20,
         backgroundColor: "#FFF",
@@ -51,7 +56,8 @@ const styles = StyleSheet.create({
         lineHeight: 14,
         marginVertical: 4,
         width: 200,
-        height: 28
+        height: 28,
+        color: "#444",
     },
     category: {
         fontFamily: 'Pretendard-bold',
