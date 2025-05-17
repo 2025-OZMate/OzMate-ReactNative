@@ -1,38 +1,59 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, ScrollView } from 'react-native';
+import { View, Text, Image, ScrollView, StyleSheet } from 'react-native';
 import InfoCard from '../components/Home/InfoCard';
+import Category from '../components/Home/Category';
 import axios from 'axios';
 
 interface Card {
     id: number,
-    ImgUrl: string,
+    image: string,
     title: string,
-    description: string,
+    subtitle: string,
     category: string
 }
 export default function HomeScreen() {
     const [cards, setCards] = useState<Card[]>([])
-    useEffect(() => {
+    const [activeCategory, setActiveCategory] = useState<string>("ALL")
+    const categories = ["ALL", "POLICY", "LIFE"]
 
-        axios.get(`http://192.168.0.9:5000/api/info-cards`)
-            .then(response => {
-                setCards(response.data)
-            })
-            .catch(err => {
-                console.error(err)
-            })
-    }, []);
+    const handleCategoryClick = async (category: string) => {
+        setActiveCategory(category)
+        try {
+            const res = await axios.get(`http://localhost:5000/infocard/category?type=${category}`)
+            setCards(res.data)
+            console.log("불러온 data: ", res.data)
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
+    useEffect(() => {
+        handleCategoryClick("ALL")
+    }, [])
+
     return (
-        <View style={{ flex: 1, }}>
+        <View style={{ flex: 1, backgroundColor: "#FFF" }}>
             <Image source={require('../assets/images/banner-img.png')}
                 style={{ height: 280, width: '100%' }} />
+
+            <View style={styles.CategoryContainer}>
+                {categories.map((category) => (
+                    <Category
+                        key={category}
+                        type={category}
+                        onPress={() => handleCategoryClick(category)}
+                        isActive={category === activeCategory}
+                    />
+                ))}
+            </View>
+
             <ScrollView>
-                {cards.map((card) => (
+                {cards.map((card, idx) => (
                     <InfoCard
-                        key={card.id}
-                        ImgUrl={card.ImgUrl}
+                        key={idx}
+                        image={card.image}
                         title={card.title}
-                        description={card.description}
+                        subtitle={card.subtitle}
                         category={card.category}
                     />
                 ))}
@@ -40,3 +61,9 @@ export default function HomeScreen() {
         </View>
     );
 }
+const styles = StyleSheet.create({
+    CategoryContainer: {
+        display: "flex", flexDirection: "row", gap: 8,
+        paddingVertical: 20, paddingLeft: 20
+    }
+})
