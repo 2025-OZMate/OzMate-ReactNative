@@ -5,6 +5,8 @@ import { useNavigation } from '@react-navigation/native';
 import { useEffect } from 'react';
 import { StackNavigationProp } from '@react-navigation/stack';
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 type RootStackParamList = {
     DetailInfo: { id: string };
 }
@@ -20,12 +22,20 @@ interface InfoCardProps {
 export default function InfoCard({ _id, image, title, subtitle, category }: InfoCardProps) {
     const navigation = useNavigation<NavigationProp>()
 
-    //console.log("page 고유id", _id)
+    const handleClick = async () => {
+        try {
+            await AsyncStorage.setItem("cardId", _id)
+            console.log('cardId 저장 완료 :', _id)
+            navigation.navigate('DetailInfo', { id: _id })
+
+        } catch (err) {
+            console.error(err)
+        }
+    }
 
     return (
         <TouchableOpacity
-            onPress={() => navigation.navigate('DetailInfo', { id: _id })}
-
+            onPress={handleClick}
             style={[styles.allContainer, shadows.shadow1]}>
 
             <Image style={styles.bannerImg} source={{ uri: `http://localhost:5000/images/${image}` }} />
