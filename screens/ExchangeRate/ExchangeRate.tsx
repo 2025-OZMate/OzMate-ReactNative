@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { View, TextInput, Text, Button, Alert, StyleSheet } from "react-native";
+import RateButton from "../../components/common/RateButton";
 
 export default function ExchangeRate() {
     const [krw, setKrw] = useState('');
@@ -10,7 +11,7 @@ export default function ExchangeRate() {
             alert('금액을 입력해주세요!')
         }
         try {
-            const res = await fetch('http://192.168.45.77:5000/exchange-rate');
+            const res = await fetch('http://localhost:5000/exchange-rate');
             const data = await res.json()
             const converted = (parseFloat(krw) * data.rate).toFixed(2);
             setAud(converted)
@@ -21,7 +22,7 @@ export default function ExchangeRate() {
     }
     return (
         <View style={styles.krwInputContainer}>
-            <Text>환율 계산기(￦➡️aud)</Text>
+            <Text>환율 계산기(￦->aud)</Text>
             <TextInput
                 style={styles.TextInput}
                 placeholder="krw 입력"
@@ -29,10 +30,12 @@ export default function ExchangeRate() {
                 value={krw}
                 onChangeText={setKrw}
             />
-            <Button
-                title="계산하기"
-                onPress={handleExchangeRate}
-            />
+            <View>
+                <RateButton
+                    onPress={handleExchangeRate}
+                    title="계산하기"
+                />
+            </View>
 
 
             {/*결과*/}
