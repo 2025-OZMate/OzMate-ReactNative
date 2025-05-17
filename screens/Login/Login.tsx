@@ -38,11 +38,16 @@ export default function Login() {
         }
 
         try {
-            const response = await axios.post("http://172.30.0.128:5000/login", form);
+            const response = await axios.post("http://localhost:5000/login", form);
 
-            //username
-            const { username } = response.data;
+            //username, _id(userId)
+            const { username, userId } = response.data;
+
             await AsyncStorage.setItem("username", username)
+            await AsyncStorage.setItem("userId", userId)
+            console.log('로그인 정보', response.data)
+            console.log('고유id', userId)
+
             console.log('login성공')
             navigation.navigate("BottomNav")
         }
