@@ -120,6 +120,7 @@ const styles = StyleSheet.create({
         fontFamily: "Pretendard-bold",
     },
     contentContainer: {
+        marginTop: 29,
         width: 335, borderRadius: 12,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 1 },
