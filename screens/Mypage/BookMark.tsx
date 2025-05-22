@@ -57,10 +57,10 @@ export default function BookMarkScreen() {
                 }}>Bookmark List</Text>
 
             <ScrollView>
-                {bookmarkedCard.map((item) => {
-                    console.log('id확인', item._id)
-                    return (
-                        <View>
+                {bookmarkedCard
+                    .filter((item): item is Card => item !== null && item !== undefined && typeof item === 'object')
+                    .map((item) => (
+                        <View key={item.cardId}>
                             <InfoCard
                                 _id={item.cardId}
                                 image={item.image}
@@ -72,8 +72,8 @@ export default function BookMarkScreen() {
                                 }}
                             />
                         </View>
-                    );
-                })}
+                    ))}
+
             </ScrollView>
         </View>
     );
