@@ -22,8 +22,6 @@ export default function FeatureCard({ title }: FeatureCardProps) {
     const handleClick = () => {
         if (title === "BookmarkList") {
             navigation.navigate("BookMarkScreen")
-        } else if (title === "Change Language") {
-            navigation.navigate("LanguageScreen")
         } else if (title === "Log Out") {
             setShowLogoutPopup(true)
         }

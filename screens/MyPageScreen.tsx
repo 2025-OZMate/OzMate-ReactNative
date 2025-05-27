@@ -11,7 +11,7 @@ type User = {
 }
 export default function MyPageScreen() {
     //const [user, setUser] = useState<User | undefined>(undefined);
-    const titles = ["BookmarkList", "Change Language", "Log Out"]
+    const titles = ["BookmarkList", "Log Out"]
     const [username, setUsername] = useState("");
 
     useEffect(() => {
