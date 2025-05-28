@@ -8,20 +8,24 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 type RootStackParamList = {
     BookMarkScreen: undefined;
     LanguageScreen: undefined;
+    FeedBack: undefined;
     Login: undefined;
 }
 
 type NavigationProp = StackNavigationProp<RootStackParamList>;
 interface FeatureCardProps {
     title: string;
+    imgSrc: string;
 }
 
-export default function FeatureCard({ title }: FeatureCardProps) {
+export default function FeatureCard({ title, imgSrc }: FeatureCardProps) {
     const navigation = useNavigation<NavigationProp>();
     const [showLogoutPopup, setShowLogoutPopup] = useState(false);
     const handleClick = () => {
         if (title === "BookmarkList") {
             navigation.navigate("BookMarkScreen")
+        } if (title === "Send FeedBack") {
+            navigation.navigate("FeedBack")
         } else if (title === "Log Out") {
             setShowLogoutPopup(true)
         }
@@ -49,7 +53,10 @@ export default function FeatureCard({ title }: FeatureCardProps) {
     return (
         <View style={styles.cardWrapper}>
             <TouchableOpacity style={styles.cardContainer} onPress={handleClick}>
-                <Text style={[styles.cardTitle, title === "Log Out" && { color: "red" }]}>{title}</Text>
+                <View style={{ display: "flex", flexDirection: "row", gap: 20 }}>
+                    <Image source={imgSrc} style={{ width: 20, height: 22 }} />
+                    <Text style={[styles.cardTitle, title === "Log Out" && { color: "red" }]}>{title}</Text>
+                </View>
 
                 {title !== "Log Out" && (
                     <Image source={require('../../assets/images/next.png')} style={styles.icon} />
