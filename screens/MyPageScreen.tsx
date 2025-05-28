@@ -11,7 +11,7 @@ type User = {
 }
 export default function MyPageScreen() {
     //const [user, setUser] = useState<User | undefined>(undefined);
-    const titles = ["BookmarkList", "Log Out"]
+    const titles = ["BookmarkList", "Send FeedBack", "Log Out"]
     const [username, setUsername] = useState("");
 
     useEffect(() => {
@@ -28,6 +28,12 @@ export default function MyPageScreen() {
         getUsername()
     }, [])
 
+    const images = {
+        1: require('../assets/images/bookmarkIcon.png'),
+        2: require('../assets/images/feedBackIcon.png'),
+        3: require('../assets/images/logoutIcon.png'),
+    }
+
     return (
         <View style={{ flex: 1, backgroundColor: colors.background, position: "relative" }}>
             {username ? <ProfileCard useName={username} /> : "Guest"}
@@ -38,6 +44,7 @@ export default function MyPageScreen() {
                     <FeatureCard
                         title={item}
                         key={idx}
+                        imgSrc={images[idx + 1]}
                     />
                 ))}
 

@@ -23,7 +23,7 @@ export default function PrevBtn({ address }: addressProps) {
         }
     }
     return (
-        <TouchableOpacity onPress={handlePress} style={{ marginTop: 54, marginLeft: 20 }}>
+        <TouchableOpacity onPress={handlePress} style={{ marginTop: 54, marginLeft: 20, zIndex: 999 }}>
             <Image source={require('../../assets/images/prev.png')}
                 style={{ width: 40, height: 40 }} />
         </TouchableOpacity>

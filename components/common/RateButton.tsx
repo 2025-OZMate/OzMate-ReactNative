@@ -16,6 +16,10 @@ export default function RateButton({ title, onPress }: RateBtnProps) {
 }
 
 const styles = StyleSheet.create({
-    Container: { width: "100%", backgroundColor: "yellow" },
-    text: { textAlign: "center" }
+    Container: {
+        marginTop: 260,
+        width: "100%", backgroundColor: "#FFC32E", borderRadius: 16,
+        paddingVertical: 15
+    },
+    text: { textAlign: "center", color: "#FFF", fontSize: 20, fontWeight: "600" }
 })

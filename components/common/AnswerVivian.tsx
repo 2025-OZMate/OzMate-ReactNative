@@ -1,6 +1,10 @@
 import React from "react";
 import { Image, View, StyleSheet, Text } from "react-native";
-export default function AnswerVivian() {
+type infoProps = {
+    user: string;
+    text: string;
+}
+export default function AnswerVivian({ user, text }: infoProps) {
     return (
         <View style={{ display: "flex", flexDirection: "row", gap: 13, paddingLeft: 20, marginTop: 60 }}>
             <Image
@@ -8,10 +12,9 @@ export default function AnswerVivian() {
                 style={{ width: 44, height: 44 }} />
 
             <View>
-                <Text style={styles.vivian}>Vivian</Text>
+                <Text style={styles.vivian}>{user}</Text>
                 <View style={styles.botContainer}>
-                    <Text style={styles.text}>Hello, I'm chatbot Vivian.
-                        Ask me what information you want!</Text>
+                    <Text style={styles.text}>{text}</Text>
                 </View>
             </View>
         </View>
@@ -28,7 +31,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         borderWidth: 1,
-        borderColor: "#EEE",
+        borderColor: "#CFCFCF",
         backgroundColor: "#FFF",
         width: 257,
         borderTopLeftRadius: 0,
