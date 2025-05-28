@@ -10,13 +10,17 @@ type NavigationProp = StackNavigationProp<RootStackParamList>;
 
 
 type addressProps = {
-    address: string;
+    address?: string;
 }
 export default function PrevBtn({ address }: addressProps) {
     const navigation = useNavigation<NavigationProp>();
 
     const handlePress = () => {
-        navigation.navigate(address);
+        if (address) {
+            navigation.navigate(address);
+        } else {
+            navigation.goBack();
+        }
     }
     return (
         <TouchableOpacity onPress={handlePress} style={{ marginTop: 54, marginLeft: 20 }}>

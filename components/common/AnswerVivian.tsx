@@ -1,0 +1,39 @@
+import React from "react";
+import { Image, View, StyleSheet, Text } from "react-native";
+export default function AnswerVivian() {
+    return (
+        <View style={{ display: "flex", flexDirection: "row", gap: 13, paddingLeft: 20, marginTop: 60 }}>
+            <Image
+                source={require('../../assets/images/vivian.png')}
+                style={{ width: 44, height: 44 }} />
+
+            <View>
+                <Text style={styles.vivian}>Vivian</Text>
+                <View style={styles.botContainer}>
+                    <Text style={styles.text}>Hello, I'm chatbot Vivian.
+                        Ask me what information you want!</Text>
+                </View>
+            </View>
+        </View>
+    )
+}
+
+const styles = StyleSheet.create({
+    text: { fontFamily: "Pretendard-Regaular", fontSize: 12, lineHeight: 15.5 },
+    vivian: { fontFamily: "Pretendard-Regaular", fontSize: 12, color: "#777", marginBottom: 7, marginTop: 6 },
+    botContainer: {
+        flexDirection: "row",
+        paddingVertical: 10,
+        paddingHorizontal: 12,
+        justifyContent: "center",
+        alignItems: "center",
+        borderWidth: 1,
+        borderColor: "#EEE",
+        backgroundColor: "#FFF",
+        width: 257,
+        borderTopLeftRadius: 0,
+        borderTopRightRadius: 13,
+        borderBottomRightRadius: 13,
+        borderBottomLeftRadius: 13,
+    },
+})
