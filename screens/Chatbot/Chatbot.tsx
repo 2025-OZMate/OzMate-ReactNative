@@ -1,14 +1,18 @@
 import React from "react";
-import { View, TextInput, Button, Text, ScrollView, Alert, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { View, TextInput, Button, Text, ScrollView, Alert, StyleSheet, Image, TouchableOpacity, TextInputComponent } from "react-native";
 import { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import PrevBtn from "../../components/common/PrevBtn";
 import axios from "axios";
 import AnswerVivian from "../../components/common/AnswerVivian";
+
 type chatMsg = {
     from: 'me' | 'ai';
     text: string;
 }
 
 export default function ChatBot() {
+
     const [userInput, setUserInput] = useState<string>('')
     const [chatLog, setChatLog] = useState<chatMsg[]>([]) //이전 대화 내용 저장 배열
 
@@ -30,22 +34,17 @@ export default function ChatBot() {
             console.error('에러 발생 : ', err)
         }
     }
-
-    function PrevButton() {
-        return (
-            <View>
-                <Image source={require('../../assets/images/prev.png')} style={styles.PrevLogo} />
-            </View>
-        )
-    }
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, backgroundColor: "#FFF" }}>
             <View style={styles.headerContainer}>
-                <PrevButton />
+                <PrevBtn address="Home" />
                 <Text style={styles.chatBotTxt}>ChatBot</Text>
             </View>
-            <ScrollView style={{ flex: 1, height: 500 }}>
-                <AnswerVivian />
+            <ScrollView style={{ flex: 1, height: 500, marginBottom: 70 }}>
+                <AnswerVivian
+                    user={"Vivian"}
+                    text={"Hello, I'm chatbot Vivian. Ask me what information you want!"}
+                />
                 {chatLog.map((msg, idx) => (
                     <View style={{
                         display: "flex",
@@ -77,6 +76,7 @@ export default function ChatBot() {
                     value={userInput}
                     onChangeText={setUserInput}
                     placeholder="메세지를 입력하세요"
+                    placeholderTextColor={"#B7B7B7"}
                     style={styles.inputQuestionContainer}
                 />
                 <TouchableOpacity onPress={sendMessage}>
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     sendContainer: { display: "flex", flexDirection: "row", gap: 13, bottom: 30, margin: "auto" },
     sendBtn: { width: 36, height: 36 },
     inputQuestionContainer: {
-        borderRadius: 95, borderWidth: 1, borderColor: "#EEE", backgroundColor: "#FFF",
+        borderRadius: 95, borderWidth: 1, borderColor: "#D5D5D5", backgroundColor: "#FFF",
         width: 299, paddingVertical: 10, paddingLeft: 20, paddingRight: 20,
         shadowColor: "#000",
         shadowOffset: {
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         borderWidth: 1,
-        borderColor: "#EEE",
+        borderColor: "#CFCFCF",
         backgroundColor: "#FFF",
         maxWidth: 257,
         borderTopLeftRadius: 0,
@@ -131,9 +131,9 @@ const styles = StyleSheet.create({
     },
     PrevLogo: { width: 40, height: 40, marginLeft: 20 },
     headerContainer: {
-        display: "flex", flexDirection: "row", alignItems: "center", marginTop: 50
+        display: "flex", flexDirection: "row", alignItems: "center", zIndex: -1
     },
     chatBotTxt: {
-        flex: 1, textAlign: "center", fontWeight: "600", fontSize: 24, marginLeft: -30
+        flex: 1, textAlign: "center", fontWeight: "600", fontSize: 24, marginLeft: -30, marginTop: 53
     }
 })
