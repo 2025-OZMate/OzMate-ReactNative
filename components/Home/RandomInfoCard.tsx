@@ -1,22 +1,66 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import InfoCard from "./InfoCard";
+import axios from "axios";
+import { useEffect } from "react";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+type RootStackParamList = {
+    DetailInfo: { id: any }
+}
+
+type NavigationProp = StackNavigationProp<RootStackParamList>
+
+interface Card {
+    _id: string,
+    cardId: string,
+    image: string,
+    title: string,
+    subtitle: string,
+    category: string
+}
 
 export default function RandomInfoCard() {
+    const navigation = useNavigation<NavigationProp>()
+    const [randomCard, setRandomCard] = useState<Card[]>([])
+
+    useEffect(() => {
+        const fetchRandomCard = async () => {
+            const cardId = await AsyncStorage.getItem("cardId")
+            try {
+                const res = await axios.get(`http://localhost:5000/random/${cardId}`)
+                setRandomCard(res.data)
+                console.log(res)
+
+            } catch (err) {
+                console.error(err)
+            }
+        }
+        fetchRandomCard()
+    }, [])
+
     return (
         <View style={{ backgroundColor: "#FFF" }}>
             <View style={styles.contour}></View>
             <Text style={styles.text}>Other information</Text>
 
-            <View style={{ marginBottom: 22 }}>
-                {/* 임시 컴포넌트 정보 */}
+            {randomCard.map((item) => (
                 <InfoCard
-                    ImgUrl={require('../../assets/images/dish.png')}
-                    title='Types of Cards'
-                    description='Information on various transportation cards used in Australia'
-                    category='LIFE'
+                    key={item._id}
+                    _id={item._id}
+                    image={item.image}
+                    title={item.title}
+                    subtitle={item.subtitle}
+                    category={item.category}
+                    onPress={() => {
+                        navigation.navigate('DetailInfo', { id: item._id });
+                    }}
                 />
-            </View>
+            ))}
+
+
         </View>
     )
 }

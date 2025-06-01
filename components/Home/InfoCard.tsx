@@ -58,8 +58,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         marginHorizontal: 20,
         backgroundColor: "#FFF",
-        borderRadius: 10,
-        marginTop: 12
+        borderRadius: 10, marginBottom: 17
     },
     contentContainer: {
         borderRadius: 10,
