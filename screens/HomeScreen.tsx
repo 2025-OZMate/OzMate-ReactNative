@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, Image, ScrollView, StyleSheet, Dimensions } from 'react-native';
 import InfoCard from '../components/Home/InfoCard';
 import Category from '../components/Home/Category';
 import axios from 'axios';
@@ -16,6 +16,8 @@ export default function HomeScreen() {
     const [cards, setCards] = useState<Card[]>([])
     const [activeCategory, setActiveCategory] = useState<string>("ALL")
     const categories = ["ALL", "POLICY", "LIFE"]
+
+    const screenHeight = Dimensions.get('window').height;
 
     const handleCategoryClick = async (category: string) => {
         setActiveCategory(category)
@@ -48,7 +50,7 @@ export default function HomeScreen() {
                 ))}
             </View>
 
-            <ScrollView>
+            <ScrollView style={{ marginBottom: 106 }}>
                 {cards.map((card, idx) => (
                     <InfoCard
                         _id={card._id}
@@ -60,6 +62,7 @@ export default function HomeScreen() {
                     />
                 ))}
             </ScrollView>
+
             <NavBar />
         </View>
     );

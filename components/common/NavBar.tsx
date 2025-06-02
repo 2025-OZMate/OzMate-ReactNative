@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
         position: "absolute", bottom: 22, width: "100%"
     },
     iconImgContainer: {
-        display: "flex", flexDirection: "row", gap: 20, alignItems: "center",
+        display: "flex", flexDirection: "row", gap: 25, alignItems: "center",
         margin: "auto"
     },
     iconImg: { width: 40, height: 40 }
