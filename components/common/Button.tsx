@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         height: 56
     },
     button: {
-        borderRadius: 16,
+        borderRadius: 10,
         paddingVertical: 13,
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 1 },

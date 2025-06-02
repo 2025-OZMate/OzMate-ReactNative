@@ -94,7 +94,7 @@ export default function ExchangeRate() {
 const styles = StyleSheet.create({
     calculateCardContainer: {
         paddingHorizontal: 15, paddingVertical: 25,
-        borderRadius: 24,
+        borderRadius: 10,
         backgroundColor: '#FFF',
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 1 },
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     showExchangeRateText: { color: "#606060", fontSize: 15, fontWeight: "500" },
     description: { marginTop: 40, paddingLeft: 20, fontFamily: "Pretendard-Regaular", fontSize: 13, color: "#888" },
     mainText: { fontFamily: "Pretendard-Regaular", fontSize: 24, fontWeight: "600" },
-    krwInputContainer: { backgroundColor: "#FFF", flex: 1 },
+    krwInputContainer: { backgroundColor: "#F5F6F8", flex: 1 },
     TextInput: {
         height: 100, borderWidth: 1, borderColor: "red",
         marginVertical: 15, paddingHorizontal: 15

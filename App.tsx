@@ -21,6 +21,8 @@ import MyPageScreen from './screens/MyPageScreen';
 import ChatBot from './screens/Chatbot/Chatbot';
 import ExchangeRate from './screens/ExchangeRate/ExchangeRate';
 import WriteInformation from './screens/Admin/WriteInformation';
+import FeedBack from './screens/Mypage/FeedBack';
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -35,7 +37,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Mypage">
+        <Stack.Navigator initialRouteName="ChatBot">
           <Stack.Screen name="LogoScreen" component={LogoScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Mypage" component={MyPageScreen} options={{ headerShown: false }} />
@@ -52,6 +54,7 @@ export default function App() {
           <Stack.Screen name="ChatBot" component={ChatBot} options={{ headerShown: false }} />
           <Stack.Screen name="ExchangeRate" component={ExchangeRate} options={{ headerShown: false }} />
           <Stack.Screen name="WriteInformation" component={WriteInformation} options={{ headerShown: false }} />
+          <Stack.Screen name="FeedBack" component={FeedBack} options={{ headerShown: false }} />
         </Stack.Navigator>
         <StatusBar style="auto" />
       </NavigationContainer>

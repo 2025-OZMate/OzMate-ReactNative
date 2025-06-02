@@ -42,8 +42,10 @@ export default function ChatBot() {
             </View>
             <ScrollView style={{ flex: 1, height: 500, marginBottom: 70 }}>
                 <AnswerVivian
+                    borderColor="#CFCFCF"
                     user={"Vivian"}
                     text={"Hello, I'm chatbot Vivian. Ask me what information you want!"}
+                    marginTop={60}
                 />
                 {chatLog.map((msg, idx) => (
                     <View style={{
@@ -75,7 +77,7 @@ export default function ChatBot() {
                 <TextInput
                     value={userInput}
                     onChangeText={setUserInput}
-                    placeholder="메세지를 입력하세요"
+                    placeholder="Please enter a message"
                     placeholderTextColor={"#B7B7B7"}
                     style={styles.inputQuestionContainer}
                 />
@@ -122,7 +124,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         borderWidth: 1,
         borderColor: "#CFCFCF",
-        backgroundColor: "#FFF",
+        backgroundColor: "#F9F9F9",
         maxWidth: 257,
         borderTopLeftRadius: 0,
         borderTopRightRadius: 13,

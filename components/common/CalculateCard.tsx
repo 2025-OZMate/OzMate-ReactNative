@@ -49,7 +49,7 @@ export default function CalculateCard({ AudMoney, num, moneyTitle, moneyValue, p
 const styles = StyleSheet.create({
     moneyInput: {
         paddingLeft: 10,
-        width: 170, height: 40, borderRadius: 10,
+        width: 170, height: 40, borderRadius: 5,
         backgroundColor: 'rgba(239, 239, 239, 0.8)',
         shadowColor: '#000',
         shadowOffset: {
