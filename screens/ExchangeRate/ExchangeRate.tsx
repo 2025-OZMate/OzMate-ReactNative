@@ -4,6 +4,11 @@ import RateButton from "../../components/common/RateButton";
 import PrevBtn from "../../components/common/PrevBtn";
 import CalculateCard from "../../components/common/CalculateCard";
 import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+type RootStackParamList = {
+    [key: string]: undefined
+}
+type NavigationProp = StackNavigationProp<RootStackParamList>
 export default function ExchangeRate() {
     const [krw, setKrw] = useState('');
     const [Aud, setAud] = useState(null);
@@ -23,11 +28,11 @@ export default function ExchangeRate() {
         }
     }
 
-    const navigation = useNavigation()
+    const navigation = useNavigation<NavigationProp>()
 
     function Prev() {
         return (
-            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+            <TouchableOpacity onPress={() => navigation.navigate('SelectInformation')}>
                 <Image source={require('../../assets/images/prev.png')}
                     style={{ width: 38, height: 38, marginLeft: 15 }} />
             </TouchableOpacity>
