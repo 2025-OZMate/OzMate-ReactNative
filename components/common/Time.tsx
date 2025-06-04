@@ -14,9 +14,14 @@ export default function Time() {
         return dayjs().tz("Australia/Sydney").format("MMMM D, YYYY (ddd)");
     }
     return (
-        <View>
-            <Text>{getAusTime()}</Text>
-            <Text>{getAusDay()}</Text>
+        <View style={{ margin: "auto" }}>
+            <Text style={[styles.font, styles.ausTime]}>{getAusTime()}</Text>
+            <Text style={[styles.font, styles.ausDay]}>{getAusDay()}</Text>
         </View>
     )
 }
+const styles = StyleSheet.create({
+    font: { fontFamily: "Pretendard-Regaular" },
+    ausTime: { fontSize: 36, color: "#1E1E1E", fontWeight: "500" },
+    ausDay: { fontSize: 18, fontWeight: "400", marginTop: 4 },
+})

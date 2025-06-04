@@ -10,7 +10,7 @@ export default function AnswerVivian({ user, text, marginTop, borderColor }: inf
     return (
         <View style={{
             display: "flex", flexDirection: "row", gap: 13, paddingLeft: 20,
-            marginTop: marginTop, borderBlockColor: borderColor
+            marginTop: marginTop, borderBlockColor: borderColor,
         }}>
             <Image
                 source={require('../../assets/images/vivian.png')}
