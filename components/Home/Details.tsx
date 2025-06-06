@@ -9,7 +9,7 @@ type DetailsProps = {
 
 export default function Details({ category, detailTitle, detailContent }: DetailsProps) {
     return (
-        <View style={{ paddingHorizontal: 20 }}>
+        <View style={{ paddingHorizontal: 20, zIndex: -1 }}>
             <View>
                 <Text style={[styles.font, styles.category]}>{category}</Text>
             </View>
@@ -35,6 +35,8 @@ const styles = StyleSheet.create({
         lineHeight: 28
     },
     category: {
+        width: 80,
+        zIndex: 1,
         marginVertical: 20,
         color: "#777",
         fontSize: 12,

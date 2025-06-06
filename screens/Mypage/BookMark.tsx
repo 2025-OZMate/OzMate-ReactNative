@@ -28,7 +28,7 @@ export default function BookMarkScreen() {
     const [bookmarkedCard, setBookmarkedCard] = useState<Card[]>([])
 
     const cardId = AsyncStorage.getItem("cardId")
-    console.log(cardId);
+    console.log('카드 아이디', cardId);
 
     useEffect(() => {
         const fetchBookmarks = async () => {
@@ -39,7 +39,7 @@ export default function BookMarkScreen() {
                 setBookmarkedCard(res.data['viewList'])
                 console.log('북마크 된 데이터', res.data['viewList'])
             } catch (err) {
-                console.error(err)
+                console.error('북마크 확인 실패 : ', err)
             }
         }
         fetchBookmarks();
@@ -47,7 +47,7 @@ export default function BookMarkScreen() {
 
 
     return (
-        <View style={{ flex: 1, backgroundColor: colors.background }}>
+        <View style={{ flex: 1, backgroundColor: colors.background, }}>
             <PrevBtn address='Mypage' />
             <Text
                 style={{
@@ -56,7 +56,7 @@ export default function BookMarkScreen() {
                     marginVertical: 20
                 }}>Bookmark List</Text>
 
-            <ScrollView>
+            <ScrollView style={{ marginBottom: 30 }}>
                 {bookmarkedCard
                     .filter((item): item is Card => item !== null && item !== undefined && typeof item === 'object')
                     .map((item) => (
