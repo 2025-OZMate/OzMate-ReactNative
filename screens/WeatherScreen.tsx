@@ -6,11 +6,6 @@ import { useNavigation } from "@react-navigation/native";
 import NavBar from "../components/common/NavBar";
 import Time from "../components/common/Time";
 
-type RootStackParamList = {
-    [key: string]: undefined
-}
-type NavigationProp = StackNavigationProp<RootStackParamList>
-
 interface Weatherinfo {
     city: string;
     mainWeather: string;
@@ -20,7 +15,7 @@ interface Weatherinfo {
     minTemp: number;
 }
 
-const cities = ['Sydney', 'South Melbourne', 'Brisbane', 'Perth'];
+const cities = ['Sydney', 'South Melbourne', 'Brisbane', 'Perth', 'Candelo', 'Hobart'];
 const WEATHER_API_KEY = process.env.EXPO_PUBLIC_WEATHER_API_KEY
 
 const sunny = require('../assets/images/sunny.png')
@@ -28,15 +23,6 @@ const rain = require('../assets/images/rain.png')
 const cloud = require('../assets/images/cloud.png')
 
 export default function Weather() {
-    const navigation = useNavigation<NavigationProp>()
-    function Prev() {
-        return (
-            <TouchableOpacity onPress={() => navigation.navigate('SelectInformation')}>
-                <Image source={require('../assets/images/prev.png')} style={{ width: 30, height: 30, marginLeft: 32, marginTop: 65 }} />
-
-            </TouchableOpacity>
-        )
-    }
 
     const [weatherData, setWeatherData] = useState<Weatherinfo[]>([])
     useEffect(() => {
@@ -65,30 +51,83 @@ export default function Weather() {
     }, [])
 
     return (
-        <View style={{ position: "relative", flex: 1 }}>
-            <Prev />
+        <View style={{ position: "relative", flex: 1, backgroundColor: "#FFFDF0" }}>
+            <Image source={require('../assets/images/linearBackGround.png')} style={styles.backgroundImg} />
             <View style={{ flex: 1 }}>
                 <Time />
-                <ScrollView style={{ marginBottom: 120 }}>
-                    {weatherData.map((item) => (
-                        <View>
-                            <Text style={styles.city}>{item.city}</Text>
-                            <Text style={styles.temp}>{item.temp}°C</Text>
-                            <Text style={styles.weather}>{item.mainWeather}</Text>
-                            <Text>{`MaxTemp: ${item.maxTemp} | MinTemp: ${item.minTemp}`}</Text>
-                            {item.mainWeather === 'Rain' && <Image source={rain} style={styles.weatherIcon} />}
-                            {item.mainWeather === 'Clouds' && <Image source={cloud} style={styles.weatherIcon} />}
-                            {item.mainWeather === 'Clear' && <Image source={sunny} style={styles.weatherIcon} />}
-                        </View>))}
+                <ScrollView style={{ marginBottom: 100, marginTop: 33 }} >
+                    {weatherData.map((item, index) => (
+                        <View key={index} style={{ alignItems: 'center', marginBottom: 30 }}>
+                            <View style={{ position: 'relative', width: 342, height: 190 }}>
+
+                                <Image source={require('../assets/images/weather-widget.png')} style={styles.widget} />
+
+                                {item.mainWeather === 'Rain' && <Image source={rain} style={styles.weatherIcon} />}
+                                {item.mainWeather === 'Clouds' && <Image source={cloud} style={styles.weatherIcon} />}
+                                {item.mainWeather === 'Clear' && <Image source={sunny} style={styles.weatherIcon} />}
+
+                                <Text style={[styles.temp, styles.font, { position: 'absolute', top: 39, left: 23 }]}>
+                                    {item.temp}°C
+                                </Text>
+
+                                <Text style={[styles.maxMinTemp, styles.font, { position: 'absolute', top: 130, }]}>
+                                    MaxTemp: {item.maxTemp} | MinTemp: {item.minTemp}
+                                </Text>
+
+                                {/* 도시 + 날씨 텍스트 */}
+                                <View style={{
+                                    position: 'absolute',
+                                    bottom: 20,
+                                    right: 23,
+                                    gap: 137,
+                                    flexDirection: 'row',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center'
+                                }}>
+                                    <Text numberOfLines={1}
+                                        ellipsizeMode="tail" style={[styles.city, styles.font]}>{item.city}</Text>
+                                    <Text style={[styles.weather, styles.font]}>{item.mainWeather}</Text>
+                                </View>
+
+                            </View>
+                        </View>
+                    ))}
+
+
                 </ScrollView>
-            </View>
+            </View >
             <NavBar />
-        </View>
+        </View >
     )
 }
 
 const styles = StyleSheet.create({
-    temp: { fontSize: 64 }, weather: { fontSize: 13 }, city: {},
-    weatherIcon: { width: 140, height: 140 },
-    headerText: { fontWeight: "500", fontSize: 20, fontFamily: "Pretendard-Regaular" },
+    widget: {
+        width: 342, height: 190,
+        zIndex: -1, position: "absolute", top: 0, left: 0
+    },
+    font: { fontFamily: "Pretendard-Regaular" },
+    maxMinTemp: { fontSize: 13, color: "#2D2D2D", marginLeft: 20 },
+    backgroundImg: {
+        height: 297, width: "100%",
+        zIndex: -1, position: "absolute", top: 0, left: 0
+    },
+    temp: { fontSize: 64, color: "#FFF", },
+    weather: { fontSize: 13, color: "#FFF" },
+    city: {
+        fontSize: 17, color: "#FFF",
+        width: 125, marginLeft: 20,
+    },
+    weatherIcon: {
+        width: 130,
+        height: 130,
+        position: 'absolute',
+        right: 10,
+        zIndex: 1
+    },
+
+    headerText: {
+        fontWeight: "500", fontSize: 20,
+        fontFamily: "Pretendard-Regaular"
+    },
 })
