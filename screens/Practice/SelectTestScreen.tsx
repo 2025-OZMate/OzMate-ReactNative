@@ -52,7 +52,7 @@ export default function SelectTestScreen() {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <PrevBtn address="TestScreen" />
+                <PrevBtn address="SelectInformation" />
                 <ProgressBar currentQuestion={currentQuestionIndex} questionsLength={quizData.length} />
             </View>
 
@@ -81,6 +81,7 @@ export default function SelectTestScreen() {
                     value={userAnswer}
                     onChangeText={setUserAnswer}
                     placeholder="Enter the correct answer"
+                    placeholderTextColor={"#B7B7B7"}
                     editable={!isAnswered}
                     style={[styles.input,
                     isAnswered && isCorrect === true && { borderColor: "green" },
@@ -148,7 +149,7 @@ const styles = StyleSheet.create({
     input: {
         display: "flex", justifyContent: "center",
         borderRadius: 10, height: 40, borderWidth: 1,
-        fontSize: 16, marginBottom: 10, borderColor: "#FFB600",
+        fontSize: 14, marginBottom: 10, borderColor: "#FFB600",
         paddingLeft: 20, fontFamily: "Pretendard-bold",
     },
 
