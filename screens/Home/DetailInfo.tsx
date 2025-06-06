@@ -3,7 +3,6 @@ import { StyleSheet, View, Text, Image, ScrollView, TouchableOpacity } from "rea
 import { useState, useEffect } from "react";
 import Details from "../../components/Home/Details";
 import RandomInfoCard from "../../components/Home/RandomInfoCard";
-import PrevBtn from "../../components/common/PrevBtn";
 import axios from "axios";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -24,32 +23,50 @@ export default function DetailInfo() {
 
     //id별로 상세 페이지 내용 가져오기
     useEffect(() => {
-        axios.get(`http://localhost:5000/infocard/${id}`)
-            .then((res) => setCard(res.data))
-            .catch((err) => console.error(err))
+        const fetchData = async () => {
+            try {
+                const res = await axios.get(`http://localhost:5000/infocard/${id}`)
+                setCard(res.data)
+
+                // 북마크 상태 확인
+                const userId = await AsyncStorage.getItem("userId");
+                const bookmarkRes = await axios.get(`http://localhost:5000/bookmark/${userId}`);
+                const viewList = bookmarkRes.data['viewList'];
+
+                const isBookmarked = viewList.filter((item: any) => item !== null && item !== undefined)
+                    .some((item: any) => item._id == id);
+                setIsBookmark(isBookmarked);
+            } catch (err) {
+                console.error(err)
+            }
+        }
+        fetchData()
     }, [id])
 
     console.log(id)
+
+    //북마크 추가/삭제
     const handleBookmark = async () => {
+        const userId = await AsyncStorage.getItem("userId");
+        const cardId = id;
+
         try {
-            const userId = await AsyncStorage.getItem("userId")
-            const cardId = id
-
-            const res = await axios.post('http://localhost:5000/bookmark',
-                {
-                    userId, cardId
-                })
-
-            if (res.data.success) {
-                setIsBookmark(true)
-                console.log('북마크 성공')
-            } else {
-                console.log('북마크 실패', res.data.message)
+            if (!isBookmark) {
+                await axios.post('http://localhost:5000/bookmark', { userId, cardId });
+                setIsBookmark(true);
+                console.log("북마크 등록됨");
+            }
+            else {
+                await axios.delete('http://localhost:5000/bookmark', {
+                    data: { userId, cardId }
+                });
+                setIsBookmark(false);
+                console.log("북마크 해제됨");
             }
         } catch (err) {
-            console.error("북마크 실패", err)
+            console.error("북마크 처리 중 오류", err);
         }
-    }
+    };
 
 
     const navigation = useNavigation();
@@ -78,10 +95,8 @@ export default function DetailInfo() {
                 <>
                     {/*북마크 버튼*/}
                     <TouchableOpacity onPress={handleBookmark}>
-                        {isBookmark ? <Image source={bookmarkImg} style={styles.bookmarkIcon} /> :
-                            <Image source={bookmarkClickedImg} style={styles.bookmarkIcon} />}
+                        <Image source={isBookmark ? bookmarkClickedImg : bookmarkImg} style={styles.bookmarkIcon} />
                     </TouchableOpacity>
-
 
                     <Details
                         category={card.category}
@@ -100,7 +115,8 @@ const styles = StyleSheet.create({
     bookmarkIcon: {
         width: 40, height: 40,
         paddingRight: 20,
-        position: "absolute", right: 10, top: 10
+        position: "absolute", right: 10, top: 10,
+        zIndex: 1000
     }
 
 })
