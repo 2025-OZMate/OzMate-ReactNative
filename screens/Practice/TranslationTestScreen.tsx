@@ -56,7 +56,7 @@ export default function TranslationTestScreen() {
 
     return (
         <View style={{ flex: 1, backgroundColor: colors.background, position: "relative", }}>
-            <View style={{ zIndex: 100, }} > <PrevBtn address="TestScreen" /></View>
+            <View style={{ zIndex: 100, }} > <PrevBtn address="SelectInformation" /></View>
             {quizDone ? (
                 <View >
                     <Result marginTop={32} />

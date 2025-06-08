@@ -17,24 +17,29 @@ type RouteProps = {
 
 export default function DetailInfo() {
     const route = useRoute<RouteProp<RouteProps, 'DetailInfo'>>()
-    const { id } = route.params
+    const id = route?.params?.id;
     const [card, setCard] = useState<any>(null)
     const [isBookmark, setIsBookmark] = useState(false)
-
+    if (!id) {
+        return (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <Text>잘못된 접근입니다.</Text>
+            </View>
+        );
+    }
     //id별로 상세 페이지 내용 가져오기
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/infocard/${id}`)
+                const res = await axios.get(`http://192.168.0.26:5000/infocard/${id}`)
                 setCard(res.data)
 
                 // 북마크 상태 확인
                 const userId = await AsyncStorage.getItem("userId");
-                const bookmarkRes = await axios.get(`http://localhost:5000/bookmark/${userId}`);
-                const viewList = bookmarkRes.data['viewList'];
+                const bookmarkRes = await axios.get(`http://192.168.0.26:5000/bookmark/${userId}`);
+                const viewList = bookmarkRes?.data?.viewList || [];
 
-                const isBookmarked = viewList.filter((item: any) => item !== null && item !== undefined)
-                    .some((item: any) => item._id == id);
+                const isBookmarked = viewList.some((item: any) => item?._id === id);
                 setIsBookmark(isBookmarked);
             } catch (err) {
                 console.error(err)
@@ -52,12 +57,12 @@ export default function DetailInfo() {
 
         try {
             if (!isBookmark) {
-                await axios.post('http://localhost:5000/bookmark', { userId, cardId });
+                await axios.post('http://192.168.0.26:5000/bookmark', { userId, cardId });
                 setIsBookmark(true);
                 console.log("북마크 등록됨");
             }
             else {
-                await axios.delete('http://localhost:5000/bookmark', {
+                await axios.delete('http://192.168.0.26:5000/bookmark', {
                     data: { userId, cardId }
                 });
                 setIsBookmark(false);
@@ -84,7 +89,7 @@ export default function DetailInfo() {
     return (
         <ScrollView style={{ backgroundColor: "#FFF", flex: 1, }}>
             {card && (
-                <Image source={{ uri: `http://localhost:5000/images/${card.image}` }}
+                <Image source={{ uri: `http://192.168.0.26:5000/images/${card.image}` }}
                     style={styles.bannerImg} />
             )}
 

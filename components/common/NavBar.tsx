@@ -11,7 +11,7 @@ type NavigationProp = StackNavigationProp<RootStackParamList>
 export default function NavBar() {
     const icons = [
         { name: "exchange", path: "SelectInformation", defaultImg: require('../../assets/images/exchangeIcon.png'), clickedImg: require('../../assets/images/exchangeClickedIcon.png') },
-        { name: "test", path: "TestScreen", defaultImg: require('../../assets/images/test.png'), clickedImg: require('../../assets/images/test-clicked.png') },
+        { name: "weather", path: "Weather", defaultImg: require('../../assets/images/test.png'), clickedImg: require('../../assets/images/test-clicked.png') },
         { name: "home", path: "Home", defaultImg: require('../../assets/images/home.png'), clickedImg: require('../../assets/images/home-clicked.png') },
         { name: "chatbot", path: "ChatBot", defaultImg: require('../../assets/images/chatBotIcon.png'), clickedImg: require('../../assets/images/chatBotClickedIcon.png') },
         { name: "mypage", path: "Mypage", defaultImg: require('../../assets/images/mypage.png'), clickedImg: require('../../assets/images/mypage-clicked.png') }
@@ -25,9 +25,7 @@ export default function NavBar() {
             <View style={styles.navContainer}>
                 <View style={styles.iconImgContainer}>
                     {icons.map((icon) => {
-                        const isActive = route.name === icon.path ||
-                            (icon.path === "SelectInformation" &&
-                                (route.name === "SelectInformation" || route.name === "Weather"))
+                        const isActive = route.name === icon.path
                         return (
                             <TouchableOpacity
                                 key={icon.name}

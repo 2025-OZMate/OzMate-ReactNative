@@ -58,35 +58,29 @@ export default function Weather() {
                 <ScrollView style={{ marginBottom: 100, marginTop: 33 }} >
                     {weatherData.map((item, index) => (
                         <View key={index} style={{ alignItems: 'center', marginBottom: 30 }}>
-                            <View style={{ position: 'relative', width: 342, height: 190 }}>
+                            <View style={{ position: 'relative', width: 342, height: 190, }}>
 
                                 <Image source={require('../assets/images/weather-widget.png')} style={styles.widget} />
 
                                 {item.mainWeather === 'Rain' && <Image source={rain} style={styles.weatherIcon} />}
                                 {item.mainWeather === 'Clouds' && <Image source={cloud} style={styles.weatherIcon} />}
                                 {item.mainWeather === 'Clear' && <Image source={sunny} style={styles.weatherIcon} />}
+                                <View style={{ paddingLeft: 20, paddingTop: 35 }}>
+                                    <Text style={[styles.temp, styles.font]}>
+                                        {item.temp}°C
+                                    </Text>
 
-                                <Text style={[styles.temp, styles.font, { position: 'absolute', top: 39, left: 23 }]}>
-                                    {item.temp}°C
-                                </Text>
 
-                                <Text style={[styles.maxMinTemp, styles.font, { position: 'absolute', top: 130, }]}>
-                                    MaxTemp: {item.maxTemp} | MinTemp: {item.minTemp}
-                                </Text>
+                                    <View style={{ display: "flex", flexDirection: "row", alignItems: "flex-end", gap: 120 }}>
+                                        <View style={{ width: 142 }}>
+                                            <Text style={[styles.maxMinTemp, styles.font,]}>
+                                                Max: {item.maxTemp} | Min: {item.minTemp}
+                                            </Text>
 
-                                {/* 도시 + 날씨 텍스트 */}
-                                <View style={{
-                                    position: 'absolute',
-                                    bottom: 20,
-                                    right: 23,
-                                    gap: 137,
-                                    flexDirection: 'row',
-                                    justifyContent: 'space-between',
-                                    alignItems: 'center'
-                                }}>
-                                    <Text numberOfLines={1}
-                                        ellipsizeMode="tail" style={[styles.city, styles.font]}>{item.city}</Text>
-                                    <Text style={[styles.weather, styles.font]}>{item.mainWeather}</Text>
+                                            <Text style={[styles.city, styles.font]}>{item.city}</Text>
+                                        </View>
+                                        <Text style={[styles.weather, styles.font]}>{item.mainWeather}</Text>
+                                    </View>
                                 </View>
 
                             </View>
@@ -104,19 +98,19 @@ export default function Weather() {
 const styles = StyleSheet.create({
     widget: {
         width: 342, height: 190,
-        zIndex: -1, position: "absolute", top: 0, left: 0
+        zIndex: -1, position: "absolute", top: 0, left: 0, borderRadius: 22
     },
     font: { fontFamily: "Pretendard-Regaular" },
-    maxMinTemp: { fontSize: 13, color: "#2D2D2D", marginLeft: 20 },
+    maxMinTemp: { fontSize: 13, color: "#2D2D2D" },
     backgroundImg: {
         height: 297, width: "100%",
-        zIndex: -1, position: "absolute", top: 0, left: 0
+        zIndex: -1, position: "absolute", top: 0, left: 0, resizeMode: "cover"
     },
     temp: { fontSize: 64, color: "#FFF", },
     weather: { fontSize: 13, color: "#FFF" },
     city: {
         fontSize: 17, color: "#FFF",
-        width: 125, marginLeft: 20,
+        marginTop: 2
     },
     weatherIcon: {
         width: 130,

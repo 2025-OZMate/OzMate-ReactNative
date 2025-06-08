@@ -13,8 +13,8 @@ export default function SelectInformation() {
     const navigation = useNavigation<NavigationProp>()
     const selectInfos = [
         { path: "ExchangeRate", title: "Exchange Rate Calculator", description: "You can check the exchange rate!", img: require('../../assets/images/calculator.png') },
-        { path: "SelectTest", title: "English practice", description: "You can learn expressions!", img: require('../../assets/images/koreaEnglish.png') },
         { path: "TranslationTest", title: "Australia Culture Quiz", description: "You can take fun quizzes about Australia!", img: require('../../assets/images/message.png') },
+        { path: "SelectTest", title: "English practice", description: "You can learn expressions!", img: require('../../assets/images/koreaEnglish.png') },
     ]
     return (
         <View style={{ position: "relative", flex: 1, backgroundColor: "#FFF9C4" }}>

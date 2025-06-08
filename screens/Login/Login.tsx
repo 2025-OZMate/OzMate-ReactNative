@@ -49,7 +49,7 @@ export default function Login() {
             console.log('고유id', userId)
 
             console.log('login성공')
-            navigation.navigate("BottomNav")
+            navigation.navigate("Home")
         }
         catch (error) {
             console.error(error);
