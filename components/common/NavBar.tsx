@@ -10,8 +10,8 @@ type NavigationProp = StackNavigationProp<RootStackParamList>
 
 export default function NavBar() {
     const icons = [
-        { name: "exchange", path: "SelectInformation", defaultImg: require('../../assets/images/exchangeIcon.png'), clickedImg: require('../../assets/images/exchangeClickedIcon.png') },
-        { name: "weather", path: "Weather", defaultImg: require('../../assets/images/test.png'), clickedImg: require('../../assets/images/test-clicked.png') },
+        { name: "exchange", path: "SelectInformation", defaultImg: require('../../assets/images/test.png'), clickedImg: require('../../assets/images/test-clicked.png') },
+        { name: "weather", path: "Weather", defaultImg: require('../../assets/images/weatherIcon.png'), clickedImg: require('../../assets/images/weatherClicked.png') },
         { name: "home", path: "Home", defaultImg: require('../../assets/images/home.png'), clickedImg: require('../../assets/images/home-clicked.png') },
         { name: "chatbot", path: "ChatBot", defaultImg: require('../../assets/images/chatBotIcon.png'), clickedImg: require('../../assets/images/chatBotClickedIcon.png') },
         { name: "mypage", path: "Mypage", defaultImg: require('../../assets/images/mypage.png'), clickedImg: require('../../assets/images/mypage-clicked.png') }
@@ -34,7 +34,7 @@ export default function NavBar() {
                             >
                                 <Image
                                     source={isActive ? icon.clickedImg : icon.defaultImg}
-                                    style={styles.iconImg}
+                                    style={icon.name === 'weather' ? styles.weatherIconImg : styles.iconImg}
                                 />
 
                             </TouchableOpacity>
@@ -47,6 +47,7 @@ export default function NavBar() {
 }
 
 const styles = StyleSheet.create({
+    weatherIconImg: { width: 30, height: 30 },
     Container: { marginHorizontal: 12 },
     navContainer: {
         backgroundColor: "#FFF", borderRadius: 30, paddingVertical: 20,
