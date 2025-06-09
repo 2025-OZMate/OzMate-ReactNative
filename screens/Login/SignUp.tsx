@@ -7,11 +7,13 @@ import Button from "../../components/common/Button";
 import axios from "axios";
 import { colors } from "../../styles/colors";
 import { StackNavigationProp } from "@react-navigation/stack";
+import Constants from 'expo-constants';
 
 type RootStackParamList = {
     Login: undefined;
 }
 export default function SignUp() {
+    const apiURL = Constants.expoConfig?.extra?.apiUrl ?? "";
     const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
     const [form, setForm] = useState({
         username: "",
@@ -35,7 +37,7 @@ export default function SignUp() {
         }
 
         try {
-            const response = await axios.post("http://localhost:5000/signup", form);//연결
+            const response = await axios.post(`${apiURL}/signup`, form);//연결
             Alert.alert('회원가입 성공')
             navigation.navigate('Login')
 

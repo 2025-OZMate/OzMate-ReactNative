@@ -14,7 +14,7 @@ export default function Time() {
         return dayjs().tz("Australia/Sydney").format("MMMM D, YYYY (ddd)").toUpperCase();
     }
     return (
-        <View style={{ margin: "auto", paddingTop: 120 }}>
+        <View style={{ margin: "auto", paddingTop: 120, zIndex: 1000 }}>
             <Text style={[styles.font, styles.ausTime]}>{getAusTime()}</Text>
             <Text style={[styles.font, styles.ausDay]}>{getAusDay()}</Text>
         </View>
@@ -23,5 +23,5 @@ export default function Time() {
 const styles = StyleSheet.create({
     font: { fontFamily: "Pretendard-Regaular" },
     ausTime: { fontSize: 40, color: "#1E1E1E", fontWeight: "500" },
-    ausDay: { fontSize: 18, fontWeight: "400", marginTop: 4, color: "#3F3F3F" },
+    ausDay: { fontSize: 18, fontWeight: "400", marginTop: 4, color: "#3F3F3F", textAlign: "center" },
 })

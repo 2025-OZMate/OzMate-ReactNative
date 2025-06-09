@@ -2,10 +2,9 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { shadows } from "../../styles/designSystem"
 import { useNavigation } from '@react-navigation/native';
-import { useEffect } from 'react';
 import { StackNavigationProp } from '@react-navigation/stack';
-import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Constants from 'expo-constants';
 
 type RootStackParamList = {
     DetailInfo: { id: string };
@@ -21,6 +20,8 @@ interface InfoCardProps {
     onPress: () => void;
 }
 export default function InfoCard({ _id, image, title, subtitle, category, onPress }: InfoCardProps) {
+    const apiURL = Constants.expoConfig?.extra?.apiUrl ?? "";
+
     const navigation = useNavigation<NavigationProp>()
 
     const handleClick = async () => {
@@ -39,7 +40,7 @@ export default function InfoCard({ _id, image, title, subtitle, category, onPres
             onPress={typeof onPress === 'function' ? onPress : handleClick}
             style={[styles.allContainer, shadows.shadow1]}>
 
-            <Image style={styles.bannerImg} source={{ uri: `http://localhost:5000/images/${image}` }} />
+            <Image style={styles.bannerImg} source={{ uri: `${apiURL}/images/${image}` }} />
             <View style={styles.contentContainer}>
                 <Text style={styles.title}>{title}</Text>
                 <Text style={styles.description}>{subtitle}</Text>

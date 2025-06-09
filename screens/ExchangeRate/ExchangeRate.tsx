@@ -1,26 +1,34 @@
 import React, { useState } from "react";
 import { View, Text, Image, Alert, StyleSheet, TouchableOpacity } from "react-native";
 import RateButton from "../../components/common/RateButton";
-import PrevBtn from "../../components/common/PrevBtn";
 import CalculateCard from "../../components/common/CalculateCard";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
+import Constants from 'expo-constants';
+
 type RootStackParamList = {
     [key: string]: undefined
 }
 type NavigationProp = StackNavigationProp<RootStackParamList>
 export default function ExchangeRate() {
+    const apiURL = Constants.expoConfig?.extra?.apiUrl ?? "";
+
     const [krw, setKrw] = useState('');
     const [Aud, setAud] = useState(null);
 
+    const formNum = (num: string) => {
+        const cleand = num.replace(/[^0-9]/g, '')
+        return cleand.replace(/\B(?=(\d{3})+(?!\d))/g, ',')//3자리마다 ,
+    }
     const handleExchangeRate = async () => {
         if (!krw.trim()) {
             alert('금액을 입력해주세요!')
         }
         try {
-            const res = await fetch('http://localhost:5000/exchange-rate');
+            const res = await fetch(`${apiURL}/exchange-rate`);
             const data = await res.json()
             const converted = (parseFloat(krw) * data.rate).toFixed(2);
+            console.log('krw : ', typeof (krw))
             setAud(converted)
         } catch (err) {
             console.error(err)
@@ -47,11 +55,6 @@ export default function ExchangeRate() {
                 </TouchableOpacity >
             </>
         )
-    }
-
-    const formNum = (num: string) => {
-        const cleand = num.replace(/[^0-9]/g, '')
-        return cleand.replace(/\B(?=(\d{3})+(?!\d))/g, ',')//3자리마다 ,
     }
 
     return (
@@ -107,8 +110,11 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
     },
     rateContainer: { display: "flex", flexDirection: "row", justifyContent: "space-between", marginTop: 30, marginBottom: 20 },
-    resetText: { fontFamily: "Pretendard-Regaular", fontSize: 12.5, color: "#FF9E00" },
-    resetBtn: { width: 56, borderWidth: 0.5, borderRadius: 10, borderColor: "#FFC32E", paddingHorizontal: 11, paddingBottom: 4 },
+    resetText: { fontFamily: "Pretendard-Regaular", fontSize: 12.5, color: "#FF9E00", textAlign: "center" },
+    resetBtn: {
+        width: 70, borderWidth: 0.5, borderRadius: 10, borderColor: "#FFC32E",
+        paddingVertical: 4
+    },
     line: { backgroundColor: "#F0F0F0", width: 316, height: 1.5, marginVertical: 20 },
     showExchangeRateText: { color: "#606060", fontSize: 15, fontWeight: "500" },
     description: { marginTop: 40, paddingLeft: 20, fontFamily: "Pretendard-Regaular", fontSize: 13, color: "#888" },

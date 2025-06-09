@@ -4,6 +4,7 @@ import InfoCard from '../components/Home/InfoCard';
 import Category from '../components/Home/Category';
 import axios from 'axios';
 import NavBar from '../components/common/NavBar';
+import Constants from 'expo-constants';
 interface Card {
     _id: string,
     id: number,
@@ -13,6 +14,8 @@ interface Card {
     category: string
 }
 export default function HomeScreen() {
+    const apiURL = Constants.expoConfig?.extra?.apiUrl ?? "";
+    console.log(apiURL)
     const [cards, setCards] = useState<Card[]>([])
     const [activeCategory, setActiveCategory] = useState<string>("ALL")
     const categories = ["ALL", "POLICY", "LIFE"]
@@ -22,7 +25,7 @@ export default function HomeScreen() {
     const handleCategoryClick = async (category: string) => {
         setActiveCategory(category)
         try {
-            const res = await axios.get(`http://192.168.0.26:5000/infocard/category?type=${category}`)
+            const res = await axios.get(`http://192.168.45.98:5000/infocard/category?type=${category}`)
             setCards(res.data)
             console.log("불러온 data: ", res.data)
         } catch (err) {

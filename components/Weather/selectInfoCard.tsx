@@ -20,7 +20,7 @@ export default function SelectInfoCard({ img, title, description }: infoCardProp
 }
 const styles = StyleSheet.create({
     font: { fontFamily: "Pretendard-bold", }, description: { color: "#777", fontSize: 12 },
-    title: { fontSize: 18, fontWeight: "500", width: 216 },
+    title: { fontSize: 18, fontWeight: "500", width: 216.6 },
     textContainer: { paddingLeft: 13, paddingRight: 10, gap: 10 },
     container: {
         display: "flex", flexDirection: "row", alignItems: "center",

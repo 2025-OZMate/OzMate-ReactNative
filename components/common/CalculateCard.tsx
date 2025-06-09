@@ -31,7 +31,10 @@ export default function CalculateCard({ AudMoney, num, moneyTitle, moneyValue, p
                 {moneyValue === "KRD" ? <TextInput
                     style={styles.moneyInput}
                     value={formNum(krw)}
-                    onChangeText={setKrw}
+                    onChangeText={(text) => {
+                        const onlyNum = text.replace(/[^0-9]/g, '');
+                        setKrw(onlyNum);
+                    }}
                     placeholder={`${placeholder}`}
                     placeholderTextColor={"#777"}
                 //keyboardType="numeric"

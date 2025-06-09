@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Constants from 'expo-constants';
 
 type RootStackParamList = {
     DetailInfo: { id: any }
@@ -23,6 +24,7 @@ interface Card {
 }
 
 export default function RandomInfoCard() {
+    const apiURL = Constants.expoConfig?.extra?.apiUrl ?? "";
     const navigation = useNavigation<NavigationProp>()
     const [randomCard, setRandomCard] = useState<Card[]>([])
 
@@ -30,7 +32,7 @@ export default function RandomInfoCard() {
         const fetchRandomCard = async () => {
             const cardId = await AsyncStorage.getItem("cardId")
             try {
-                const res = await axios.get(`http://localhost:5000/random/${cardId}`)
+                const res = await axios.get(`${apiURL}/random/${cardId}`)
                 setRandomCard(res.data)
                 console.log(res)
 

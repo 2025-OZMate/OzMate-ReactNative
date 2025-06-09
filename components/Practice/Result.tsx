@@ -14,7 +14,7 @@ type NavigationProp = StackNavigationProp<RootStackParamList>
 
 export default function Result({ marginTop }: styleProps) {
     const navigation = useNavigation<NavigationProp>();
-    const handleClick = () => { navigation.navigate("TestScreen") }
+    const handleClick = () => { navigation.navigate("SelectInformation") }
     return (
         <View>
             <Image source={require('../../assets/images/finish.png')}

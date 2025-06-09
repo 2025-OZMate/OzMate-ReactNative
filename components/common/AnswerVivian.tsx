@@ -27,7 +27,7 @@ export default function AnswerVivian({ user, text, marginTop, borderColor }: inf
 }
 
 const styles = StyleSheet.create({
-    text: { fontFamily: "Pretendard-Regaular", fontSize: 12, lineHeight: 15.5 },
+    text: { fontFamily: "Pretendard-Regaular", fontSize: 13, lineHeight: 18.5 },
     vivian: { fontFamily: "Pretendard-Regaular", fontSize: 12, color: "#777", marginBottom: 7, marginTop: 6 },
     botContainer: {
         flexDirection: "row",
