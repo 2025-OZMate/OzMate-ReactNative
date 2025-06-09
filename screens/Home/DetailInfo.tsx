@@ -7,6 +7,7 @@ import axios from "axios";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
+import Constants from 'expo-constants';
 
 const bookmarkImg = require('../../assets/images/bookmark.png')
 const bookmarkClickedImg = require('../../assets/images/bookmark-clicked.png')
@@ -16,6 +17,8 @@ type RouteProps = {
 }
 
 export default function DetailInfo() {
+    const apiURL = Constants.expoConfig?.extra?.apiUrl ?? "";
+    console.log(apiURL)
     const route = useRoute<RouteProp<RouteProps, 'DetailInfo'>>()
     const id = route?.params?.id;
     const [card, setCard] = useState<any>(null)
@@ -31,12 +34,12 @@ export default function DetailInfo() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get(`http://192.168.0.26:5000/infocard/${id}`)
+                const res = await axios.get(`${apiURL}/infocard/${id}`)
                 setCard(res.data)
 
                 // 북마크 상태 확인
                 const userId = await AsyncStorage.getItem("userId");
-                const bookmarkRes = await axios.get(`http://192.168.0.26:5000/bookmark/${userId}`);
+                const bookmarkRes = await axios.get(`${apiURL}/bookmark/${userId}`);
                 const viewList = bookmarkRes?.data?.viewList || [];
 
                 const isBookmarked = viewList.some((item: any) => item?._id === id);
@@ -57,12 +60,12 @@ export default function DetailInfo() {
 
         try {
             if (!isBookmark) {
-                await axios.post('http://192.168.0.26:5000/bookmark', { userId, cardId });
+                await axios.post(`${apiURL}/bookmark`, { userId, cardId });
                 setIsBookmark(true);
                 console.log("북마크 등록됨");
             }
             else {
-                await axios.delete('http://192.168.0.26:5000/bookmark', {
+                await axios.delete(`${apiURL}/bookmark`, {
                     data: { userId, cardId }
                 });
                 setIsBookmark(false);
@@ -89,7 +92,7 @@ export default function DetailInfo() {
     return (
         <ScrollView style={{ backgroundColor: "#FFF", flex: 1, }}>
             {card && (
-                <Image source={{ uri: `http://192.168.0.26:5000/images/${card.image}` }}
+                <Image source={{ uri: `${apiURL}/images/${card.image}` }}
                     style={styles.bannerImg} />
             )}
 

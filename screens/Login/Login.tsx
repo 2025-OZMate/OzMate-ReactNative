@@ -7,7 +7,7 @@ import Logo from "../../components/common/Logo";
 import Button from "../../components/common/Button";
 import { StackNavigationProp } from "@react-navigation/stack";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import Constants from 'expo-constants';
 
 type RootStackParamList = {
     SignUp: undefined;
@@ -23,7 +23,7 @@ export default function Login() {
     const handleChange = (name, value) => {
         setForm({ ...form, [name]: value });
     }
-
+    const apiURL = Constants.expoConfig?.extra?.apiUrl ?? "";
     const handleSubmit = async () => {
         const { userid, password } = form;
         if (!userid.trim() && !password.trim()) {
@@ -38,7 +38,7 @@ export default function Login() {
         }
 
         try {
-            const response = await axios.post("http://localhost:5000/login", form);
+            const response = await axios.post(`${apiURL}/login`, form);
 
             //username, _id(userId)
             const { username, userId } = response.data;

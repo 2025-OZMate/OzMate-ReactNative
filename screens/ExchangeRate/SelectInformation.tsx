@@ -24,9 +24,10 @@ export default function SelectInformation() {
             </View>
             <View style={{ flex: 1, paddingHorizontal: 20 }}>
                 <View style={{ gap: 14, marginTop: 32 }}>
-                    {selectInfos.map((item) => (
+                    {selectInfos.map((item, index) => (
                         <TouchableOpacity onPress={() => navigation.navigate(item.path)}>
                             <SelectInfoCard
+                                key={index}
                                 title={item.title}
                                 description={item.description}
                                 img={item.img}

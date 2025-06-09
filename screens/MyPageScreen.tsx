@@ -36,7 +36,7 @@ export default function MyPageScreen() {
 
     return (
         <View style={{ flex: 1, backgroundColor: colors.background, position: "relative" }}>
-            {username ? <ProfileCard useName={username} /> : "Guest"}
+            {username ? <ProfileCard useName={username} /> : <ProfileCard useName='Guest' />}
             <View style={{ height: 12, backgroundColor: "#FFF59D", marginVertical: 20, }} />
 
             <View style={{ display: "flex", gap: 12, flex: 1 }}>

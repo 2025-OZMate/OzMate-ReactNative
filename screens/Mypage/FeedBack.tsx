@@ -6,6 +6,7 @@ import AnswerVivian from "../../components/common/AnswerVivian";
 import ButtonComponent from "../../components/common/Button";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
+import Constants from 'expo-constants';
 
 type RootStackParamList = {
     [key: string]: undefined
@@ -13,6 +14,7 @@ type RootStackParamList = {
 type NavigationProp = StackNavigationProp<RootStackParamList>
 
 export default function FeedBack() {
+    const apiURL = Constants.expoConfig?.extra?.apiUrl ?? "";
     const navigation = useNavigation<NavigationProp>()
     const [showPopup, setShowPopup] = useState(false)
     const [form, setForm] = useState({
@@ -26,10 +28,10 @@ export default function FeedBack() {
             Alert.alert('제목과 내용을 입력해주세요.')
         } else if (!title.trim()) {
             Alert.alert('제목을 입력해주세요')
-        } else { Alert.alert('내용을 입력해주세요') }
+        }
 
         try {
-            const res = await axios.post('http://localhost:5000/feedback', form)
+            const res = await axios.post(`${apiURL}/feedback`, form)
             console.log('피드백 저장 성공: ', res)
             setShowPopup(true)
         } catch (err) {
@@ -67,13 +69,10 @@ export default function FeedBack() {
         <View style={{ flex: 1, backgroundColor: "#FFF" }}>
             <Prev />
 
-            <View style={{ marginBottom: 64 }}>
+            <View style={{ marginBottom: 30 }}>
                 <AnswerVivian
                     user="OzMate"
-                    text="We look forward to your feedback to help us 
-                    make the app better! Feel free to leave 
-                    suggestions for new features or ideas for improve
-                    ments."
+                    text="We look forward to your feedback to help us make the app better! Feel free to leave suggestions for new features or ideas for improve ments."
                     marginTop={32}
                     borderColor="#CCCCCC"
                 /></View>
@@ -114,12 +113,13 @@ const styles = StyleSheet.create({
     },
     titleText: { fontWeight: "700", fontSize: 14, fontFamily: "Pretendard-Regaular", marginBottom: 8 },
     headerContainer: {
+        marginTop: 60,//임시
         display: "flex", flexDirection: "row", width: "100%", gap: 73,
         shadowColor: '#000', shadowOpacity: 0.1,
         shadowOffset: { width: 0, height: 2 },
         shadowRadius: 4, elevation: 4, paddingVertical: 16
     },
-    headerText: { fontWeight: "500", fontSize: 20, fontFamily: "Pretendard-Regaular", marginTop: 2 },
+    headerText: { fontWeight: "500", fontSize: 20, fontFamily: "Pretendard-Regaular", marginTop: 4 },
     popupContainer: {
         position: "absolute", top: 0, left: 0, width: "100%",
         bottom: 0, backgroundColor: "rgba(0, 0, 0, 0.50)",

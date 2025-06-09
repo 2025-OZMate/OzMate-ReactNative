@@ -3,7 +3,6 @@ import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import PrevBtn from "../../components/common/PrevBtn";
 import { colors } from "../../styles/colors";
 import { useNavigation } from "@react-navigation/native";
-import Button from "../../components/common/Button";
 import Result from "../../components/Practice/Result";
 type Quiz = {
     id: number;
@@ -12,6 +11,7 @@ type Quiz = {
     correct: string;
     explanation: string;
 }
+
 const quizData: Quiz[] = require('../../assets/data/cultureQuizList.json')
 export default function TranslationTestScreen() {
     const navigation = useNavigation();
@@ -21,6 +21,8 @@ export default function TranslationTestScreen() {
     const [isCorrect, setIsCorrect] = useState<boolean | null>(null)
 
     const currentQuestion = quizData[currentIdx];
+    console.log("question", currentQuestion.question)
+    console.log("choices", currentQuestion.choice)
 
     const handleSelect = (choice: string) => {
         const isAnswerCorrect = choice === currentQuestion.correct
@@ -41,10 +43,9 @@ export default function TranslationTestScreen() {
     function NextButton() {
         return (
             <View style={styles.NextButtonContainer}>
-                <View  >
+                <View>
                     <TouchableOpacity
                         onPress={handleNext}
-
                     >
                         <Text style={styles.nextText}>Next</Text>
                     </TouchableOpacity>
@@ -52,7 +53,6 @@ export default function TranslationTestScreen() {
             </View>
         )
     }
-
 
     return (
         <View style={{ flex: 1, backgroundColor: colors.background, position: "relative", }}>
@@ -68,11 +68,14 @@ export default function TranslationTestScreen() {
                         source={isCorrect ? require('../../assets/images/correct.png')
                             : require('../../assets/images/notCorrect.png')}
                         style={[styles.Iconimg, isCorrect ? styles.correctImg : styles.notCorrectImg]} />
+
                     <View style={styles.contentContainer}>
                         <Text style={styles.correctAnswer}>{currentQuestion.correct}</Text>
                         <Text style={styles.explain}>{currentQuestion.explanation}</Text>
                     </View>
-                    <NextButton />
+                    <View style={{ marginBottom: 20 }}>
+                        <NextButton />
+                    </View>
                 </View>
             ) : (
                 //quiz화면
@@ -86,13 +89,14 @@ export default function TranslationTestScreen() {
                             <Text style={styles.question}>{currentQuestion.question}</Text>
                         </View>
                     </View>
-                    {currentQuestion.choice.map((item, idx) => (
+
+                    {currentQuestion?.choice?.map((item, idx) => (
                         <TouchableOpacity
                             key={idx}
                             onPress={() => handleSelect(item)}
                             style={styles.choiceButton}
                         >
-                            <Text style={styles.btnText}> {item}</Text>
+                            <Text style={styles.btnText}>{item}</Text>
                         </TouchableOpacity>
                     ))}
                 </View>
@@ -106,7 +110,7 @@ const styles = StyleSheet.create({
     NextButtonContainer: {
         height: 56, width: "100%", paddingVertical: 15,
         backgroundColor: "#FFB600", borderRadius: 16,
-        position: "absolute", bottom: 20,
+        position: "absolute", bottom: 25,
     },
     nextText: { textAlign: "center", fontSize: 20, color: "#FFF", fontWeight: "600" },
     bannerImg: {

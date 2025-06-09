@@ -4,6 +4,8 @@ import { View, TextInput, Button, Alert, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { ScrollView } from "react-native-gesture-handler";
+import Constants from 'expo-constants';
+
 
 type RootStackParamList = {
     [key: string]: undefined;
@@ -25,6 +27,7 @@ type FormType = Record<FormField, string>; //Record : key, value
 
 
 export default function WriteInformation() {
+    const apiURL = Constants.expoConfig?.extra?.apiUrl ?? "";
     const navigation = useNavigation<NavigationProp>()
     const [form, setForm] = useState<FormType>({
         cardId: "",
@@ -47,7 +50,7 @@ export default function WriteInformation() {
             return;
         }
         try {
-            const res = await axios.post('http://localhost:5000/infocard/add', form);
+            const res = await axios.post(`${apiURL}/infocard/add`, form);
             console.log('정보 입력 성공! : ', res.data);
             navigation.navigate("Home")
         } catch (err) {

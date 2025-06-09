@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBar from '../components/common/NavBar';
 import Card from '../components/Practice/Card';
-import { View, Text, Image } from 'react-native';
+import { View, Image } from 'react-native';
 const practiceImg = require('../assets/images/practiceLogo.png')
 const cultureImg = require('../assets/images/cultureQuizImg.png')
 const titles = [

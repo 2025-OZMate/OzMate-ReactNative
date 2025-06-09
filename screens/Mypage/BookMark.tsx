@@ -8,6 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 import InfoCard from '../../components/Home/InfoCard';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { StackNavigationProp } from '@react-navigation/stack';
+import Constants from 'expo-constants';
 
 type RootStackParamList = {
     DetailInfo: { id: any }
@@ -24,6 +25,7 @@ interface Card {
 }
 
 export default function BookMarkScreen() {
+    const apiURL = Constants.expoConfig?.extra?.apiUrl ?? "";
     const navigation = useNavigation<NavigationProp>()
     const [bookmarkedCard, setBookmarkedCard] = useState<Card[]>([])
 
@@ -35,7 +37,7 @@ export default function BookMarkScreen() {
             const userId = await AsyncStorage.getItem("userId")
 
             try {
-                const res = await axios.get(`http://localhost:5000/bookmark/${userId}`)
+                const res = await axios.get(`${apiURL}/bookmark/${userId}`)
                 setBookmarkedCard(res.data['viewList'])
                 console.log('북마크 된 데이터', res.data['viewList'])
             } catch (err) {

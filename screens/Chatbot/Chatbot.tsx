@@ -1,10 +1,10 @@
 import React from "react";
-import { View, TextInput, Button, Text, ScrollView, Alert, StyleSheet, Image, TouchableOpacity, TextInputComponent } from "react-native";
+import { View, TextInput, KeyboardAvoidingView, Text, ScrollView, Alert, StyleSheet, Image, TouchableOpacity, TextInputComponent } from "react-native";
 import { useState } from "react";
-import { useNavigation } from "@react-navigation/native";
 import PrevBtn from "../../components/common/PrevBtn";
 import axios from "axios";
 import AnswerVivian from "../../components/common/AnswerVivian";
+import Constants from 'expo-constants';
 
 type chatMsg = {
     from: 'me' | 'ai';
@@ -16,14 +16,14 @@ export default function ChatBot() {
     const [userInput, setUserInput] = useState<string>('')
     const [chatLog, setChatLog] = useState<chatMsg[]>([]) //이전 대화 내용 저장 배열
 
-
+    const apiURL = Constants.expoConfig?.extra?.apiUrl ?? "";
     const sendMessage = async () => {
         if (!userInput.trim()) {
             Alert.alert('메세지를 입력해주세요!')
             return;
         }
         try {
-            const response = await axios.post('http://localhost:5000/chatbot', {
+            const response = await axios.post(`${apiURL}/chatbot`, {
                 message: userInput,
             })
             setChatLog([...chatLog, { from: 'me', text: userInput },
@@ -35,7 +35,7 @@ export default function ChatBot() {
         }
     }
     return (
-        <View style={{ flex: 1, backgroundColor: "#FFF" }}>
+        <View style={{ flex: 1, }}>
             <Image source={require('../../assets/images/chatbotBackgroundImg.png')}
                 style={styles.backgroundImage}
                 resizeMode="contain"
@@ -51,7 +51,7 @@ export default function ChatBot() {
                     <AnswerVivian
                         borderColor="#CFCFCF"
                         user={"Vivian"}
-                        text={"Hello, I'm chatbot Vivian. Ask me what information you want!"}
+                        text={`Hello, I'm chatbot Vivian. \nAsk me what information you want!`}
                         marginTop={60}
                     />
                     {chatLog.map((msg, idx) => (
@@ -65,6 +65,7 @@ export default function ChatBot() {
                         }}>
                             {msg.from === "ai" && (
                                 <Image
+                                    key={idx}
                                     style={styles.vivianImg}
                                     source={require('../../assets/images/vivian.png')} />
                             )}
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
     },
     meAllContainer: { alignSelf: "flex-end" },
     vivianImg: { width: 44, height: 44 },
-    vivian: { fontFamily: "Pretendard-Regaular", fontSize: 12, color: "#777", marginBottom: 7, marginTop: 6 },
+    vivian: { fontFamily: "Pretendard-Regaular", fontSize: 13, color: "#777", marginBottom: 7, marginTop: 6 },
     sendContainer: { display: "flex", flexDirection: "row", gap: 13, bottom: 30, margin: "auto" },
     sendBtn: { width: 36, height: 36 },
     inputQuestionContainer: {
@@ -125,7 +126,7 @@ const styles = StyleSheet.create({
 
         elevation: 2,
     },
-    text: { fontFamily: "Pretendard-Regaular", fontSize: 12, lineHeight: 15.5 },
+    text: { fontFamily: "Pretendard-Regaular", fontSize: 13, lineHeight: 18.5 },
     meContainer: {
         alignSelf: "flex-end", maxWidth: 257,
         marginVertical: 20,

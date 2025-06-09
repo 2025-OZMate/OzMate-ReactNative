@@ -53,7 +53,7 @@ export default function FeatureCard({ title, imgSrc }: FeatureCardProps) {
     return (
         <View style={styles.cardWrapper}>
             <TouchableOpacity style={styles.cardContainer} onPress={handleClick}>
-                <View style={{ display: "flex", flexDirection: "row", gap: 20 }}>
+                <View style={{ display: "flex", flexDirection: "row", gap: 20, alignItems: "center" }}>
                     <Image source={imgSrc} style={{ width: 20, height: 22 }} />
                     <Text style={[styles.cardTitle, title === "Log Out" && { color: "red" }]}>{title}</Text>
                 </View>
