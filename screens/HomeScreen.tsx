@@ -25,7 +25,7 @@ export default function HomeScreen() {
     const handleCategoryClick = async (category: string) => {
         setActiveCategory(category)
         try {
-            const res = await axios.get(`http://192.168.45.98:5000/infocard/category?type=${category}`)
+            const res = await axios.get(`${apiURL}/infocard/category?type=${category}`)
             setCards(res.data)
             console.log("불러온 data: ", res.data)
         } catch (err) {

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, TextInput, KeyboardAvoidingView, Text, ScrollView, Alert, StyleSheet, Image, TouchableOpacity, TextInputComponent } from "react-native";
+import { View, TextInput, Platform, KeyboardAvoidingView, Text, ScrollView, Alert, StyleSheet, Image, TouchableOpacity, TextInputComponent } from "react-native";
 import { useState } from "react";
 import PrevBtn from "../../components/common/PrevBtn";
 import axios from "axios";
@@ -35,67 +35,73 @@ export default function ChatBot() {
         }
     }
     return (
-        <View style={{ flex: 1, }}>
-            <Image source={require('../../assets/images/chatbotBackgroundImg.png')}
-                style={styles.backgroundImage}
-                resizeMode="contain"
-            />
+        <KeyboardAvoidingView
+            style={{ flex: 1, backgroundColor: "white", zIndex: -1 }}
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            keyboardVerticalOffset={1}
+        >
+            <View style={{ flex: 1, }}>
+                <Image source={require('../../assets/images/chatbotBackgroundImg.png')}
+                    style={styles.backgroundImage}
+                    resizeMode="contain"
+                />
 
-            <View style={{ flex: 1 }}>
-                <View style={styles.headerContainer}>
-                    <PrevBtn address="Home" />
-                    <Text style={styles.chatBotTxt}>ChatBot</Text>
-                </View>
-                <ScrollView style={{ flex: 1, height: 500, marginBottom: 70 }}>
+                <View style={{ flex: 1 }}>
+                    <View style={styles.headerContainer}>
+                        <PrevBtn address="Home" />
+                        <Text style={styles.chatBotTxt}>ChatBot</Text>
+                    </View>
+                    <ScrollView style={{ flex: 1, height: 520, marginBottom: 70 }}>
 
-                    <AnswerVivian
-                        borderColor="#CFCFCF"
-                        user={"Vivian"}
-                        text={`Hello, I'm chatbot Vivian. \nAsk me what information you want!`}
-                        marginTop={60}
-                    />
-                    {chatLog.map((msg, idx) => (
-                        <View style={{
-                            display: "flex",
-                            flexDirection: "row",
-                            justifyContent: msg.from === "me" ? "flex-end" : "flex-start",
-                            paddingLeft: msg.from === "me" ? 0 : 20,
-                            paddingRight: msg.from === "me" ? 20 : 0,
-                            gap: 13,
-                        }}>
-                            {msg.from === "ai" && (
-                                <Image
-                                    key={idx}
-                                    style={styles.vivianImg}
-                                    source={require('../../assets/images/vivian.png')} />
-                            )}
-                            <View style={msg.from === 'me' && styles.meAllContainer}>
-                                <Text style={styles.vivian}>{msg.from === 'me' ? "" : "Vivian"}</Text>
-                                <View style={msg.from === 'me' ? styles.meContainer : styles.botContainer}>
-                                    <Text key={idx} style={styles.text}>
-                                        {msg.text}
-                                    </Text>
+                        <AnswerVivian
+                            borderColor="#CFCFCF"
+                            user={"Vivian"}
+                            text={`Hello, I'm chatbot Vivian. \nAsk me what information you want!`}
+                            marginTop={60}
+                        />
+                        {chatLog.map((msg, idx) => (
+                            <View key={idx} style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                justifyContent: msg.from === "me" ? "flex-end" : "flex-start",
+                                paddingLeft: msg.from === "me" ? 0 : 20,
+                                paddingRight: msg.from === "me" ? 20 : 0,
+                                gap: 13,
+                            }}>
+                                {msg.from === "ai" && (
+                                    <Image
+                                        key={idx}
+                                        style={styles.vivianImg}
+                                        source={require('../../assets/images/vivian.png')} />
+                                )}
+                                <View style={msg.from === 'me' && styles.meAllContainer}>
+                                    <Text style={styles.vivian}>{msg.from === 'me' ? "" : "Vivian"}</Text>
+                                    <View style={msg.from === 'me' ? styles.meContainer : styles.botContainer}>
+                                        <Text key={idx} style={styles.text}>
+                                            {msg.text}
+                                        </Text>
+                                    </View>
                                 </View>
                             </View>
-                        </View>
-                    ))}
-                </ScrollView>
+                        ))}
+                    </ScrollView>
 
-                <View style={styles.sendContainer}>
-                    <TextInput
-                        value={userInput}
-                        onChangeText={setUserInput}
-                        placeholder="Please enter a message"
-                        placeholderTextColor={"#B7B7B7"}
-                        style={styles.inputQuestionContainer}
-                    />
-                    <TouchableOpacity onPress={sendMessage}>
-                        <Image source={require('../../assets/images/send.png')}
-                            style={styles.sendBtn} />
-                    </TouchableOpacity>
+                    <View style={styles.sendContainer}>
+                        <TextInput
+                            value={userInput}
+                            onChangeText={setUserInput}
+                            placeholder="Please enter a message"
+                            placeholderTextColor={"#B7B7B7"}
+                            style={styles.inputQuestionContainer}
+                        />
+                        <TouchableOpacity onPress={sendMessage}>
+                            <Image source={require('../../assets/images/send.png')}
+                                style={styles.sendBtn} />
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
-        </View >
+            </View >
+        </KeyboardAvoidingView>
     )
 }
 const styles = StyleSheet.create({
@@ -107,15 +113,37 @@ const styles = StyleSheet.create({
         height: '90%',
         alignSelf: 'center',
         zIndex: -1,
+        backgroundColor: "#FFF"
     },
     meAllContainer: { alignSelf: "flex-end" },
-    vivianImg: { width: 44, height: 44 },
-    vivian: { fontFamily: "Pretendard-Regaular", fontSize: 13, color: "#777", marginBottom: 7, marginTop: 6 },
-    sendContainer: { display: "flex", flexDirection: "row", gap: 13, bottom: 30, margin: "auto" },
+    vivianImg: {
+        width: 44,
+        height: 44
+    },
+    vivian: {
+        fontFamily: "Pretendard-Regaular",
+        fontSize: 13,
+        color: "#777",
+        marginBottom: 7,
+        marginTop: 6
+    },
+    sendContainer: {
+        display: "flex",
+        flexDirection: "row",
+        gap: 13,
+        bottom: 30,
+        margin: "auto"
+    },
     sendBtn: { width: 36, height: 36 },
     inputQuestionContainer: {
-        borderRadius: 95, borderWidth: 1, borderColor: "#D5D5D5", backgroundColor: "#FFF",
-        width: 299, paddingVertical: 10, paddingLeft: 20, paddingRight: 20,
+        borderRadius: 95,
+        borderWidth: 1,
+        borderColor: "#D5D5D5",
+        backgroundColor: "#FFF",
+        width: 299,
+        paddingVertical: 10,
+        paddingLeft: 20,
+        paddingRight: 20,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -126,17 +154,26 @@ const styles = StyleSheet.create({
 
         elevation: 2,
     },
-    text: { fontFamily: "Pretendard-Regaular", fontSize: 13, lineHeight: 18.5 },
+    text: {
+        fontFamily: "Pretendard-Regaular",
+        fontSize: 13,
+        lineHeight: 18.5
+    },
     meContainer: {
         alignSelf: "flex-end", maxWidth: 257,
         marginVertical: 20,
-        paddingVertical: 9, paddingHorizontal: 12, backgroundColor: "#FFEE7F",
-        borderTopLeftRadius: 13, borderTopRightRadius: 0,
-        borderBottomRightRadius: 13, borderBottomLeftRadius: 13,
+        paddingVertical: 9,
+        paddingHorizontal: 12,
+        backgroundColor: "#FFEE7F",
+        borderTopLeftRadius: 13,
+        borderTopRightRadius: 0,
+        borderBottomRightRadius: 13,
+        borderBottomLeftRadius: 13,
     },
     botContainer: {
         flexDirection: "row",
-        paddingVertical: 10,
+        paddingTop: 10,
+        paddingBottom: 10,
         paddingHorizontal: 12,
         justifyContent: "center",
         alignItems: "center",
@@ -149,11 +186,23 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 13,
         borderBottomLeftRadius: 13,
     },
-    PrevLogo: { width: 40, height: 40, marginLeft: 20 },
+    PrevLogo: {
+        width: 40,
+        height: 40,
+        marginLeft: 20
+    },
     headerContainer: {
-        display: "flex", flexDirection: "row", alignItems: "center", zIndex: -1
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        zIndex: -1
     },
     chatBotTxt: {
-        flex: 1, textAlign: "center", fontWeight: "600", fontSize: 24, marginLeft: -30, marginTop: 53
+        flex: 1,
+        textAlign: "center",
+        fontWeight: "600",
+        fontSize: 24,
+        marginLeft: -40,
+        marginTop: 53
     }
 })

@@ -43,7 +43,7 @@ export default function FeedBack() {
         return (
             <View style={styles.popupContainer}>
                 <View style={styles.popupCard}>
-                    <Image source={require('../../assets/images/check.png')} style={{ width: 28, height: 28, marginBottom: 8 }} />
+                    <Image source={require('../../assets/images/check.png')} style={{ width: 28, height: 28, marginBottom: 10 }} />
 
                     <Text style={[styles.text1, styles.commonText]}>Thank you for your valuable opinion.</Text>
                     <Text style={[styles.text2, styles.commonText]}>We will reflect it </Text>
@@ -100,39 +100,98 @@ export default function FeedBack() {
 }
 const { height } = Dimensions.get('window');
 const styles = StyleSheet.create({
-    text2: { color: "#505050", fontWeight: "500" },
-    commonText: { fontSize: 15, fontFamily: "Pretendard-Regaular", marginBottom: 1 },
-    text1: { textAlign: "center", lineHeight: 22, color: "#808080", fontWeight: "400" },
+    text2: {
+        color: "#505050",
+        fontWeight: "500"
+    },
+    commonText: {
+        fontSize: 15,
+        fontFamily: "Pretendard-Regaular",
+        marginBottom: 1
+    },
+    text1: {
+        textAlign: "center",
+        lineHeight: 22,
+        color: "#808080",
+        fontWeight: "400"
+    },
     detailInput: {
-        width: "100%", paddingVertical: 9, paddingHorizontal: 14, borderRadius: 7,
-        borderColor: "#E0E0E0", borderWidth: 1, paddingBottom: 200, marginBottom: 73,
+        width: "100%",
+        paddingVertical: 9,
+        paddingHorizontal: 14,
+        borderRadius: 7,
+        borderColor: "#E0E0E0",
+        borderWidth: 1,
+        paddingBottom: 200,
+        marginBottom: 73,
     },
     titleInput: {
-        borderColor: "#E0E0E0", borderWidth: 1, borderRadius: 5,
-        width: "100%", fontSize: 14, paddingVertical: 9, paddingLeft: 14, marginBottom: 29
+        borderColor: "#E0E0E0",
+        borderWidth: 1,
+        borderRadius: 5,
+        width: "100%",
+        fontSize: 14,
+        paddingVertical: 9,
+        paddingLeft: 14,
+        marginBottom: 29
     },
-    titleText: { fontWeight: "700", fontSize: 14, fontFamily: "Pretendard-Regaular", marginBottom: 8 },
+    titleText: {
+        fontWeight: "700",
+        fontSize: 14,
+        fontFamily: "Pretendard-Regaular",
+        marginBottom: 8
+    },
     headerContainer: {
         marginTop: 60,//임시
-        display: "flex", flexDirection: "row", width: "100%", gap: 73,
-        shadowColor: '#000', shadowOpacity: 0.1,
+        display: "flex",
+        flexDirection: "row",
+        width: "100%",
+        gap: 73,
+        shadowColor: '#000',
+        shadowOpacity: 0.1,
         shadowOffset: { width: 0, height: 2 },
-        shadowRadius: 4, elevation: 4, paddingVertical: 16
+        shadowRadius: 4,
+        elevation: 4,
+        paddingVertical: 16
     },
-    headerText: { fontWeight: "500", fontSize: 20, fontFamily: "Pretendard-Regaular", marginTop: 4 },
+    headerText: {
+        fontWeight: "500",
+        fontSize: 20,
+        fontFamily: "Pretendard-Regaular",
+        marginTop: 4
+    },
     popupContainer: {
-        position: "absolute", top: 0, left: 0, width: "100%",
-        bottom: 0, backgroundColor: "rgba(0, 0, 0, 0.50)",
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        bottom: 0,
+        backgroundColor: "rgba(0, 0, 0, 0.50)",
         justifyContent: "center",
-        alignItems: "center", height: height
+        alignItems: "center",
+        height: height
     },
-    ok: { fontSize: 20, fontWeight: "600", textAlign: "center", color: "#FFF" },
+    ok: {
+        fontSize: 18,
+        fontWeight: "600",
+        textAlign: "center",
+        color: "#FFF"
+    },
     okBtn: {
-        backgroundColor: "#FFC32E", width: 200, paddingVertical: 5, borderRadius: 6, marginTop: 28
+        backgroundColor: "#FFC32E",
+        width: 200,
+        paddingVertical: 5,
+        borderRadius: 6,
+        marginTop: 28
     },
     popupCard: {
-        borderRadius: 14, backgroundColor: "#FFF", display: "flex", alignItems: "center",
-        paddingHorizontal: 19, paddingVertical: 19, shadowColor: "#000",
+        borderRadius: 14,
+        backgroundColor: "#FFF",
+        display: "flex",
+        alignItems: "center",
+        paddingHorizontal: 22,
+        paddingVertical: 22,
+        shadowColor: "#000",
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.2,
         shadowRadius: 6,

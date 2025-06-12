@@ -44,7 +44,7 @@ export default function RandomInfoCard() {
     }, [])
 
     return (
-        <View style={{ backgroundColor: "#FFF" }}>
+        <View style={{ backgroundColor: "#FFF", marginBottom: 20 }}>
             <View style={styles.contour}></View>
             <Text style={styles.text}>Other information</Text>
 
@@ -61,8 +61,6 @@ export default function RandomInfoCard() {
                     }}
                 />
             ))}
-
-
         </View>
     )
 }

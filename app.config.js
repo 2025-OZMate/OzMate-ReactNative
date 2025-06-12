@@ -4,7 +4,7 @@ export default {
         slug: "OzMate-ReactNative",
         version: "1.0.0",
         extra: {
-            apiUrl: "http://192.168.45.98:5000"
+            apiUrl: "http://192.168.1.76:5000"
         }
     }
 };

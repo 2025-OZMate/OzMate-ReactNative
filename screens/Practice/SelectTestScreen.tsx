@@ -57,7 +57,7 @@ export default function SelectTestScreen() {
             </View>
 
             <View style={styles.contentContainer}>
-                <Text style={styles.indexText}>{currentQuestionIndex + 1}/{quizData.length}</Text>
+                <Text style={styles.indexText}>{currentQuestionIndex + 1} / {quizData.length}</Text>
                 <Text style={styles.questionText}>{current.question}</Text>
             </View>
 
