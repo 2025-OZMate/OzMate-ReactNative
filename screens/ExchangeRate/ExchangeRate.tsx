@@ -109,19 +109,58 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.1,
         shadowRadius: 4,
     },
-    rateContainer: { display: "flex", flexDirection: "row", justifyContent: "space-between", marginTop: 30, marginBottom: 20 },
-    resetText: { fontFamily: "Pretendard-Regaular", fontSize: 12.5, color: "#FF9E00", textAlign: "center" },
+    rateContainer: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginTop: 30,
+        marginBottom: 20
+    },
+    resetText: {
+        fontFamily: "Pretendard-Regaular",
+        fontSize: 12.5,
+        color: "#FF9E00",
+        textAlign: "center"
+    },
     resetBtn: {
-        width: 70, borderWidth: 0.5, borderRadius: 10, borderColor: "#FFC32E",
+        width: 70,
+        borderWidth: 0.5,
+        borderRadius: 10,
+        borderColor: "#FFC32E",
         paddingVertical: 4
     },
-    line: { backgroundColor: "#F0F0F0", width: 316, height: 1.5, marginVertical: 20 },
-    showExchangeRateText: { color: "#606060", fontSize: 15, fontWeight: "500" },
-    description: { marginTop: 40, paddingLeft: 20, fontFamily: "Pretendard-Regaular", fontSize: 13, color: "#888" },
-    mainText: { fontFamily: "Pretendard-Regaular", fontSize: 23, fontWeight: "600" },
-    krwInputContainer: { backgroundColor: "#F5F6F8", flex: 1 },
+    line: {
+        backgroundColor: "#F0F0F0",
+        width: 316,
+        height: 1.5,
+        marginVertical: 20
+    },
+    showExchangeRateText: {
+        color: "#606060",
+        fontSize: 15,
+        fontWeight: "500"
+    },
+    description: {
+        marginTop: 40,
+        paddingLeft: 20,
+        fontFamily: "Pretendard-Regaular",
+        fontSize: 13,
+        color: "#888"
+    },
+    mainText: {
+        fontFamily: "Pretendard-Regaular",
+        fontSize: 23,
+        fontWeight: "600"
+    },
+    krwInputContainer: {
+        backgroundColor: "#FFFF",
+        flex: 1
+    },
     TextInput: {
-        height: 100, borderWidth: 1, borderColor: "red",
-        marginVertical: 15, paddingHorizontal: 15
+        height: 100,
+        borderWidth: 1,
+        borderColor: "red",
+        marginVertical: 15,
+        paddingHorizontal: 15
     }
 })

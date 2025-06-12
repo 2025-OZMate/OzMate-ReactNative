@@ -20,8 +20,10 @@ export default function Category({ type, onPress, isActive }: CategoryProps) {
 const styles = StyleSheet.create({
     activeBg: { backgroundColor: "#FFF9C4" },
     Container: {
-        backgroundColor: "#FFF", borderRadius: 16, height: 24,
-        paddingHorizontal: 17, paddingVertical: 2,
+        backgroundColor: "#FFF",
+        borderRadius: 16,
+        paddingHorizontal: 17,
+        paddingVertical: 5.5,
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 1 },
         shadowOpacity: 0.1,

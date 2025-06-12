@@ -58,7 +58,7 @@ export default function BookMarkScreen() {
                     marginVertical: 20
                 }}>Bookmark List</Text>
 
-            <ScrollView style={{ marginBottom: 30 }}>
+            <ScrollView style={{ marginBottom: 30, marginTop: 10 }}>
                 {bookmarkedCard
                     .filter((item): item is Card => item !== null && item !== undefined && typeof item === 'object')
                     .map((item) => (

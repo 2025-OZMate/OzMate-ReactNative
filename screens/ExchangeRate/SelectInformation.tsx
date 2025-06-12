@@ -23,9 +23,9 @@ export default function SelectInformation() {
                     style={{ width: 100, height: 24, margin: "auto" }} />
             </View>
             <View style={{ flex: 1, paddingHorizontal: 20 }}>
-                <View style={{ gap: 14, marginTop: 32 }}>
+                <View style={{ gap: 14, marginTop: 32 }} >
                     {selectInfos.map((item, index) => (
-                        <TouchableOpacity onPress={() => navigation.navigate(item.path)}>
+                        <TouchableOpacity key={index} onPress={() => navigation.navigate(item.path)}>
                             <SelectInfoCard
                                 key={index}
                                 title={item.title}

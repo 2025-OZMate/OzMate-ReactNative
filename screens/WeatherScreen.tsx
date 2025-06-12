@@ -55,7 +55,7 @@ export default function Weather() {
             <Image source={require('../assets/images/linearBackGround.png')} style={styles.backgroundImg} />
             <View style={{ flex: 1 }}>
                 <Time />
-                <ScrollView style={{ marginBottom: 100, marginTop: 33 }} >
+                <ScrollView style={{ marginBottom: 100, marginTop: 33, zIndex: 10000 }} >
                     {weatherData.map((item, index) => (
                         <View key={index} style={{ alignItems: 'center', marginBottom: 30 }}>
                             <View style={{ position: 'relative', width: 342, height: 190, }}>
@@ -97,19 +97,42 @@ export default function Weather() {
 
 const styles = StyleSheet.create({
     widget: {
-        width: 342, height: 190,
-        zIndex: -1, position: "absolute", top: 0, left: 0, borderRadius: 22
+        width: 342,
+        height: 190,
+        zIndex: -1,
+        position: "absolute",
+        top: 0,
+        left: 0,
+        borderRadius: 22
     },
-    font: { fontFamily: "Pretendard-Regaular" },
-    maxMinTemp: { fontSize: 13, color: "#2D2D2D" },
+    font: {
+        fontFamily: "Pretendard-Regaular"
+    },
+    maxMinTemp: {
+        fontSize: 13,
+        color: "#2D2D2D"
+    },
     backgroundImg: {
-        height: 297, width: "100%",
-        zIndex: -1, position: "absolute", top: 0, left: 0, resizeMode: "cover"
+        height: 297,
+        width: "100%",
+        zIndex: 1,
+        position: "absolute",
+        top: 0,
+        left: 0,
+        resizeMode: "cover"
     },
-    temp: { fontSize: 64, color: "#FFF", },
-    weather: { fontSize: 13, color: "#FFF" },
+    temp: {
+        fontSize: 64,
+        color: "#FFF",
+        marginTop: 20 //임시
+    },
+    weather: {
+        fontSize: 13,
+        color: "#FFF"
+    },
     city: {
-        fontSize: 17, color: "#FFF",
+        fontSize: 17,
+        color: "#FFF",
         marginTop: 2
     },
     weatherIcon: {
@@ -121,7 +144,8 @@ const styles = StyleSheet.create({
     },
 
     headerText: {
-        fontWeight: "500", fontSize: 20,
+        fontWeight: "500",
+        fontSize: 20,
         fontFamily: "Pretendard-Regaular"
     },
 })
