@@ -1,12 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import {
-  View,
-  Text,
-  Image,
-  ScrollView,
-  StyleSheet,
-  Dimensions,
-} from "react-native";
+import { View, Image, ScrollView, StyleSheet } from "react-native";
 import InfoCard from "../components/Home/InfoCard";
 import Category from "../components/Home/Category";
 import axios from "axios";

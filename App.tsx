@@ -5,16 +5,13 @@ import { useFonts } from "expo-font";
 /*import AppLoading from 'expo-app-loading';*/
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import BottomNav from "./components/common/BottomNav";
 import SignUp from "./screens/Login/SignUp";
 import Login from "./screens/Login/Login";
 import LogoScreen from "./screens/LogoScreen";
 import HomeScreen from "./screens/HomeScreen";
-import TestScreen from "./screens/TestScreen";
 import SelectTestScreen from "./screens/Practice/SelectTestScreen";
 import TranslationTestScreen from "./screens/Practice/TranslationTestScreen";
 import BookMarkScreen from "./screens/Mypage/BookMark";
-import LanguageScreen from "./screens/Mypage/Language";
 import RandomInfoCard from "./components/Home/RandomInfoCard";
 import DetailInfo from "./screens/Home/DetailInfo";
 import MyPageScreen from "./screens/MyPageScreen";
@@ -39,7 +36,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="TranslationTest">
+        <Stack.Navigator initialRouteName="SelectInformation">
           <Stack.Screen
             name="LogoScreen"
             component={LogoScreen}
@@ -81,11 +78,6 @@ export default function App() {
             options={{ headerShown: false }}
           />
           <Stack.Screen
-            name="LanguageScreen"
-            component={LanguageScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
             name="RandomInfoCard"
             component={RandomInfoCard}
             options={{ headerShown: false }}
@@ -93,16 +85,6 @@ export default function App() {
           <Stack.Screen
             name="DetailInfo"
             component={DetailInfo}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="TestScreen"
-            component={TestScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="BottomNav"
-            component={BottomNav}
             options={{ headerShown: false }}
           />
           <Stack.Screen
