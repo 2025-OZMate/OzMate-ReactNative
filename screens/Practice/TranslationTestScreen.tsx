@@ -96,9 +96,7 @@ export default function TranslationTestScreen() {
             />
             <View style={styles.questionContainer}>
               <Text style={styles.index}>Quiz. {currentQuestion.id}</Text>
-              <Text style={styles.question}>
-                test {currentQuestion.question}
-              </Text>
+              <Text style={styles.question}>{currentQuestion.question}</Text>
             </View>
           </View>
 
@@ -108,7 +106,7 @@ export default function TranslationTestScreen() {
               onPress={() => handleSelect(item)}
               style={styles.choiceButton}
             >
-              <Text style={styles.btnText}>test{item}</Text>
+              <Text style={styles.btnText}>{item}</Text>
             </TouchableOpacity>
           ))}
         </View>
@@ -141,7 +139,7 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   ButtonContainer: {
-    paddingTop: 250 /*임시*/,
+    paddingTop: 270 /*임시*/,
   },
   correctAnswer: {
     textAlign: "center",
