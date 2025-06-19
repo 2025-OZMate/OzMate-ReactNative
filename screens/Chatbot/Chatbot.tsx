@@ -70,7 +70,7 @@ export default function ChatBot() {
               borderColor="#CFCFCF"
               user={"Vivian"}
               text={`Hello, I'm chatbot Vivian. \nAsk me what information you want!`}
-              marginTop={60}
+              marginTop={35}
             />
             {chatLog.map((msg, idx) => (
               <View
@@ -224,6 +224,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     zIndex: -1,
+    marginLeft: -9,
   },
   chatBotTxt: {
     flex: 1,

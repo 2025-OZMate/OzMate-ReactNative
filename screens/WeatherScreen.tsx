@@ -96,7 +96,7 @@ export default function Weather() {
                       gap: 120,
                     }}
                   >
-                    <View style={{ width: 142 }}>
+                    <View style={{ width: 142, marginTop: 2.6 }}>
                       <Text style={[styles.maxMinTemp, styles.font]}>
                         Max: {item.maxTemp} | Min: {item.minTemp}
                       </Text>
@@ -147,7 +147,8 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
   },
   temp: {
-    fontSize: 64,
+    fontWeight: 500,
+    fontSize: 60,
     color: "#FFF",
     marginTop: 20, //임시
   },
@@ -156,8 +157,9 @@ const styles = StyleSheet.create({
     color: "#FFF",
   },
   city: {
+    fontWeight: 500,
     fontSize: 17,
-    color: "#FFF",
+    color: "#000",
     marginTop: 2,
   },
   weatherIcon: {
