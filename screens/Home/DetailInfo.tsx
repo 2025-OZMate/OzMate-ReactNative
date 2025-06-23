@@ -90,7 +90,7 @@ export default function DetailInfo() {
         onPress={() => {
           navigation.goBack();
         }}
-        style={{ marginTop: 54, marginLeft: 20 }}
+        style={{ marginTop: 54, marginLeft: 10 }}
       >
         <Image
           source={require("../../assets/images/prev.png")}

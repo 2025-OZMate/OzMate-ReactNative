@@ -82,10 +82,6 @@ export default function ExchangeRate() {
         <Text style={styles.mainText}>Exchange Rate Calculate</Text>
       </View>
 
-      <Text style={styles.description}>
-        Enter Korean money and press Calculate!
-      </Text>
-
       <View style={{ paddingHorizontal: 20 }}>
         <View style={styles.rateContainer}>
           <Text style={styles.showExchangeRateText}>
@@ -112,7 +108,14 @@ export default function ExchangeRate() {
             AudMoney={Aud}
           />
         </View>
-        <RateButton onPress={handleExchangeRate} title="Calculate" />
+
+        <Text style={styles.description}>
+          Enter Korean money and press Calculate!
+        </Text>
+
+        <View style={{ marginTop: 25 }}>
+          <RateButton onPress={handleExchangeRate} title="Calculate" />
+        </View>
       </View>
     </View>
   );
@@ -161,8 +164,8 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
   description: {
-    marginTop: 40,
-    paddingLeft: 20,
+    marginTop: 20,
+    paddingLeft: 10,
     fontFamily: "Pretendard-Regaular",
     fontSize: 13,
     color: "#888",

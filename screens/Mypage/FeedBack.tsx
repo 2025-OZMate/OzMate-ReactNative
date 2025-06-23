@@ -99,7 +99,7 @@ export default function FeedBack() {
         <AnswerVivian
           user="OzMate"
           text="We look forward to your feedback to help us make the app better! Feel free to leave suggestions for new features or ideas for improve ments."
-          marginTop={32}
+          marginTop={10}
           borderColor="#CCCCCC"
         />
       </View>
@@ -124,7 +124,7 @@ export default function FeedBack() {
         ></TextInput>
       </View>
 
-      <View style={{ marginTop: 20 }}>
+      <View style={{ marginTop: 30 }}>
         <ButtonComponent title="Send" onPress={handleSubmit} />
       </View>
       {showPopup && <FinishPopUp />}
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     fontSize: 20,
     fontFamily: "Pretendard-Regaular",
-    marginTop: 4,
+    marginTop: 5.5,
   },
   popupContainer: {
     position: "absolute",

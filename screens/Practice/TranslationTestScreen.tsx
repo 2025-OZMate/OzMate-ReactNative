@@ -57,7 +57,7 @@ export default function TranslationTestScreen() {
         position: "relative",
       }}
     >
-      <View style={{ zIndex: 100 }}>
+      <View style={{ zIndex: 100, marginLeft: -5 }}>
         <PrevBtn address="SelectInformation" />
       </View>
       {quizDone ? (
